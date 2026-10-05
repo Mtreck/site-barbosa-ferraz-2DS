@@ -1,0 +1,260 @@
+/*
+  ESTILO COMPARTILHADO - Colégio Estadual Barbosa Ferraz
+
+  ATENÇÃO: todos os valores abaixo são PROVISÓRIOS.
+  A equipe Identidade visual vai substituí-los pelas cores, fontes e
+  espaçamentos definidos em paginas/identidade/guia-de-estilo.md.
+
+  Somente a equipe Identidade visual edita este arquivo.
+  As outras equipes usam as variáveis daqui, por exemplo: var(--cor-primaria).
+  Precisa de algo novo? Abra uma Issue "[Equipe] Pedido: ...".
+*/
+
+/* ========== 1. VARIÁVEIS (cores, fontes, espaços) ========== */
+:root {
+  /* Cores */
+  --cor-primaria: #1f4e79;      /* cor principal (menu, títulos) */
+  --cor-secundaria: #2e7d5b;    /* cor de apoio */
+  --cor-destaque: #f2b705;      /* chama atenção (botões, avisos) */
+  --cor-fundo: #f7f7f5;         /* fundo das páginas */
+  --cor-texto: #1e1e1e;         /* texto principal */
+  --cor-texto-suave: #5a5a5a;   /* textos secundários */
+  --cor-borda: #d9d9d9;         /* linhas e bordas */
+
+  /* Fontes: pilhas de fontes do sistema (não precisam de internet) */
+  --fonte-titulo: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Espaçamentos, do menor para o maior */
+  --espaco-xs: 4px;
+  --espaco-sm: 8px;
+  --espaco-md: 16px;
+  --espaco-lg: 32px;
+  --espaco-xl: 64px;
+
+  /* Outros */
+  --raio: 8px;                                  /* arredondamento dos cantos */
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.12);      /* sombra leve */
+  --largura-max: 1100px;                        /* largura máxima do conteúdo */
+}
+
+/* ========== 2. RESET SIMPLES ========== */
+/* Faz a largura incluir borda e preenchimento em todos os elementos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Tira as margens padrão do navegador */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Imagens nunca passam da largura da tela */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========== 3. BASE DA PÁGINA ========== */
+body {
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* O conteúdo principal ocupa o espaço que sobrar (rodapé fica embaixo) */
+main {
+  flex: 1;
+  padding-top: var(--espaco-lg);
+  padding-bottom: var(--espaco-lg);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-primaria);
+  line-height: 1.25;
+  margin-bottom: var(--espaco-md);
+}
+
+p {
+  margin-bottom: var(--espaco-md);
+}
+
+a {
+  color: var(--cor-primaria);
+}
+
+/* ========== 4. CLASSES REUTILIZÁVEIS ========== */
+
+/* Centraliza o conteúdo e limita a largura */
+.container {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--espaco-md);
+  padding-right: var(--espaco-md);
+}
+
+/* Botão principal */
+.botao {
+  display: inline-block;
+  padding: var(--espaco-sm) var(--espaco-md);
+  border: 2px solid var(--cor-primaria);
+  border-radius: var(--raio);
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botao:hover,
+.botao:focus {
+  background-color: var(--cor-secundaria);
+  border-color: var(--cor-secundaria);
+}
+
+/* Botão secundário: só com contorno */
+.botao-secundario {
+  background-color: transparent;
+  color: var(--cor-primaria);
+}
+
+.botao-secundario:hover,
+.botao-secundario:focus {
+  color: var(--cor-fundo);
+}
+
+/* Caixa com fundo, borda e sombra (para cursos, eventos, avisos...) */
+.card {
+  background-color: #ffffff;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: var(--espaco-md);
+}
+
+/* Grade que se ajusta sozinha: cada coluna tem no mínimo 260px */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--espaco-md);
+}
+
+/* ========== 5. CABEÇALHO E MENU ========== */
+.cabecalho {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+}
+
+/* Linha com o nome do colégio e o botão de menu */
+.cabecalho-conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-sm);
+  padding-top: var(--espaco-md);
+  padding-bottom: var(--espaco-md);
+}
+
+.cabecalho-logo {
+  color: var(--cor-fundo);
+  font-family: var(--fonte-titulo);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Botão "Menu": aparece só no celular */
+.menu-botao {
+  padding: var(--espaco-xs) var(--espaco-md);
+  border: 1px solid var(--cor-fundo);
+  border-radius: var(--raio);
+  background-color: transparent;
+  color: var(--cor-fundo);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Navegação ocupa a linha inteira no celular */
+.menu-nav {
+  width: 100%;
+}
+
+/* Lista de links: escondida no celular até clicar em "Menu" */
+.menu-lista {
+  display: none;
+  list-style: none;
+  flex-direction: column;
+  gap: var(--espaco-xs);
+}
+
+/* Quando o botão é clicado, o JavaScript coloca a classe .aberto */
+.menu-lista.aberto {
+  display: flex;
+}
+
+.menu-lista a {
+  display: block;
+  padding: var(--espaco-sm);
+  border-radius: var(--raio);
+  color: var(--cor-fundo);
+  text-decoration: none;
+}
+
+.menu-lista a:hover,
+.menu-lista a:focus {
+  text-decoration: underline;
+}
+
+/* Link da página atual */
+.menu-lista a.ativo {
+  background-color: var(--cor-destaque);
+  color: var(--cor-texto);
+}
+
+/* Telas a partir de 768px: menu sempre visível e botão escondido */
+@media (min-width: 768px) {
+  .menu-botao {
+    display: none;
+  }
+
+  .menu-nav {
+    width: auto;
+  }
+
+  .menu-lista {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* ========== 6. RODAPÉ ========== */
+.rodape {
+  background-color: var(--cor-texto);
+  color: var(--cor-fundo);
+  padding-top: var(--espaco-lg);
+  padding-bottom: var(--espaco-lg);
+  font-size: 0.9rem;
+}
+
+.rodape p {
+  margin-bottom: var(--espaco-xs);
+}
+
+.rodape-nome {
+  font-weight: bold;
+}
