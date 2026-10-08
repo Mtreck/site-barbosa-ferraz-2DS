@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../imagens-principais/logo-colegio.png">
   <title>Início | Colégio Estadual Barbosa Ferraz</title>
 
   <!-- Estilo compartilhado por todas as páginas -->
@@ -45,6 +46,44 @@
 
         <!-- Os cards são gerados pelo pagina.js a partir de uma lista de cursos -->
         <ul class="inicio-lista-cursos" id="lista-cursos"></ul>
+      </div>
+    </section>
+
+    <!-- ===== Quadro de avisos e eventos ===== -->
+    <section class="inicio-recados" aria-labelledby="inicio-recados-titulo">
+      <div class="container">
+        <h2 class="inicio-recados-titulo" id="inicio-recados-titulo">Avisos e Eventos</h2>
+        <p class="inicio-recados-subtitulo">
+          Acompanhe os comunicados e as novidades do colégio.
+        </p>
+
+        <div class="inicio-grade-recados">
+          <section class="inicio-grupo-recados" aria-labelledby="inicio-avisos-titulo">
+            <h3 id="inicio-avisos-titulo">Avisos</h3>
+            <ul class="inicio-lista-recados">
+              <!-- Para incluir um aviso, adicione outro artigo dentro desta lista. -->
+              <li>
+                <article class="inicio-recado-card">
+                  <h4>Espaço para avisos</h4>
+                  <p>Novos comunicados confirmados serão publicados aqui.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section class="inicio-grupo-recados" aria-labelledby="inicio-eventos-titulo">
+            <h3 id="inicio-eventos-titulo">Eventos</h3>
+            <ul class="inicio-lista-recados">
+              <!-- Para incluir um evento, adicione outro artigo dentro desta lista. -->
+              <li>
+                <article class="inicio-recado-card">
+                  <h4>Espaço para eventos</h4>
+                  <p>Novos eventos confirmados serão publicados aqui.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+        </div>
       </div>
     </section>
   </main>

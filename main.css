@@ -5,14 +5,27 @@
 
 /* ========== 1. VARIÁVEIS GLOBAIS ========== */
 :root {
-  --cor-primaria: #123B5D;
-  --cor-secundaria: #1769AA;
+  /* Azul principal: cabeçalho, identidade visual e elementos principais. */
+  --cor-primaria: #1769AA;
+
+  /* Azul vivo: botões, links e demais elementos interativos. */
+  --cor-secundaria: #2E86C1;
   --cor-destaque: #2E86C1;
+
+  /* Azul profundo: títulos, textos importantes e rodapé. */
+  --cor-profunda: #123B5D;
+
+  /* Azul acinzentado: textos secundários, ícones e detalhes. */
+  --cor-texto-suave: #6F8FA6;
+
+  /* Branco: fundo principal e áreas de conteúdo. */
   --cor-fundo: #FFFFFF;
+
+  /* Cinza claro: fundos de seções, cards e áreas de destaque. */
   --cor-fundo-suave: #F2F5F7;
-  --cor-texto: #1E1E1E;
-  --cor-texto-suave: #5A5A5A;
-  --cor-borda: #D9D9D9;
+
+  --cor-texto: var(--cor-profunda);
+  --cor-borda: var(--cor-texto-suave);
 
   --fonte-titulo: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -69,7 +82,7 @@ h1,
 h2,
 h3 {
   margin-bottom: var(--espaco-md);
-  color: var(--cor-primaria);
+  color: var(--cor-profunda);
   font-family: var(--fonte-titulo);
   line-height: 1.25;
 }
@@ -219,23 +232,27 @@ button:focus-visible {
 
 .menu-lista a:hover,
 .menu-lista a:focus {
-  background-color: var(--cor-fundo-suave);
-  color: var(--cor-secundaria);
+  background-color: var(--cor-fundo);
+  color: var(--cor-profunda);
 }
 
 .menu-lista a.ativo,
-.menu-lista a.ativo:hover,
 .menu-lista a.ativo:focus {
   background-color: var(--cor-secundaria);
   color: var(--cor-fundo);
   font-weight: bold;
 }
 
+.menu-lista a.ativo:hover {
+  background-color: var(--cor-fundo);
+  color: var(--cor-profunda);
+}
+
 /* ========== 5. RODAPÉ ========== */
 .rodape {
   padding-top: var(--espaco-lg);
   padding-bottom: var(--espaco-lg);
-  background-color: var(--cor-primaria);
+  background-color: var(--cor-profunda);
   color: var(--cor-fundo);
   font-size: 0.9rem;
 }
