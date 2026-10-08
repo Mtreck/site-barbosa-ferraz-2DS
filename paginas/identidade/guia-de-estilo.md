@@ -1,7 +1,7 @@
 # Guia de estilo
 
 Preenchido pela equipe Identidade visual. As outras equipes seguem este guia.
-Os valores daqui devem ser os mesmos das variáveis em `compartilhado/estilo.css`.
+Os valores daqui devem ser os mesmos das variáveis em `main.css`.
 
 ## Ideia por trás do visual
 
@@ -23,15 +23,15 @@ site, variando peso e tamanho entre título e texto — isso é o que dá o ar
 | --cor-secundaria | #004c94 (azul médio) | Hover de botões, acento esquerdo dos cards |
 | --cor-link | #4169e1 (azul vivo) | Links dentro do texto |
 | --cor-destaque | #fff52b (amarelo) | Botão de ação, link ativo do menu, ícone da marca — nunca como cor de texto sobre fundo claro |
+| --cor-profunda | #123B5D | Títulos, textos importantes e rodapé |
 | --cor-fundo | #f5f7fb (quase branco, azulado) | Fundo das páginas |
+| --cor-fundo-suave | #F2F5F7 | Fundos de seções e cards claros |
 | --cor-superficie | #ffffff (branco) | Fundo de cards e caixas |
 | --cor-texto | #14293a (azul bem escuro, quase preto) | Texto principal, fundo do rodapé |
 | --cor-texto-suave | #4f6378 (azul-acinzentado) | Textos secundários, legendas |
 | --cor-borda | #dce3ea (cinza-azulado claro) | Linhas, bordas de card |
 
-As cinco primeiras cores são a paleta oficial do colégio. `--cor-fundo`,
-`--cor-texto-suave` e `--cor-borda` são tons neutros criados para dar
-suporte a elas (não existe fundo claro nem cinza neutro nas cores oficiais).
+As cinco primeiras cores são a paleta oficial do colégio. `--cor-fundo`, `--cor-texto-suave` e `--cor-borda` são tons neutros criados para dar suporte a elas (não existe fundo claro nem cinza neutro nas cores oficiais).
 
 Proibido usar outro valor de cor (hex) em pagina.css. Só as variáveis acima.
 

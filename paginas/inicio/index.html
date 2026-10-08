@@ -3,27 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../imagens-principais/logo-colegio.png">
   <title>Início | Colégio Estadual Barbosa Ferraz</title>
-  <!-- Estilo comum a todo o site (equipe Identidade visual) -->
-  <link rel="stylesheet" href="../../compartilhado/estilo.css">
+
+  <!-- Estilo compartilhado por todas as páginas -->
+  <link rel="stylesheet" href="../../main.css">
   <!-- Estilo só desta página (equipe Início) -->
   <link rel="stylesheet" href="pagina.css">
 </head>
 <body data-pagina="inicio">
 
-  <!-- O menu é montado aqui pelo arquivo compartilhado/componentes.js -->
+  <!-- O menu é montado pelo arquivo principal main.js -->
   <div id="menu"></div>
 
-  <main class="container">
-    <!-- TODO equipe: veja REGRAS.md, seção 12, para a missão desta página -->
-    <h1>Início</h1>
+  <main>
+    <!-- ===== Apresentação principal (hero) ===== -->
+    <!-- Textos provisórios: a equipe de Conteúdo vai substituí-los depois -->
+    <section class="inicio-hero">
+      <div class="container inicio-hero-conteudo">
+        <h1 class="inicio-titulo">Colégio Estadual Barbosa Ferraz</h1>
+        <p class="inicio-hero-texto">
+          Desejamos que você se sinta bem entre nós, ao mesmo tempo que
+          encontre oportunidades e condições para aprender e crescer.
+        </p>
+        <p class="inicio-hero-texto"><strong>Seja bem-vindo!</strong></p>
+        <!-- [CONFIRMAR] destino do botão: página do Colégio, da equipe Colégio -->
+        <a class="botao inicio-botao" href="../colegio/index.html">Conheça o Colégio</a>
+      </div>
+      <!-- Faixa com as marcas dos cursos e dos 60 anos (imagem existente) -->
+      <div class="container">
+        <img class="inicio-hero-imagem" src="imagens/recepcao-inicial.png"
+             alt="Marcas dos cursos do colégio e emblema dos 60 anos do Colégio Estadual Barbosa Ferraz">
+      </div>
+    </section>
+
+    <!-- ===== Catálogo de cursos ===== -->
+    <!-- A seção ocupa a largura toda (fundo cinza); o .container centraliza o conteúdo -->
+    <section class="inicio-catalogo">
+      <div class="container">
+        <h2 class="inicio-secao-titulo">Catálogo de Cursos</h2>
+        <p class="inicio-secao-subtitulo">Estes são os cursos que estão em funcionamento atualmente</p>
+
+        <!-- Os cards são gerados pelo pagina.js a partir de uma lista de cursos -->
+        <ul class="inicio-lista-cursos" id="lista-cursos"></ul>
+      </div>
+    </section>
+
+    <!-- ===== Quadro de avisos e eventos ===== -->
+    <section class="inicio-recados" aria-labelledby="inicio-recados-titulo">
+      <div class="container">
+        <h2 class="inicio-recados-titulo" id="inicio-recados-titulo">Avisos e Eventos</h2>
+        <p class="inicio-recados-subtitulo">
+          Acompanhe os comunicados e as novidades do colégio.
+        </p>
+
+        <div class="inicio-grade-recados">
+          <section class="inicio-grupo-recados" aria-labelledby="inicio-avisos-titulo">
+            <h3 id="inicio-avisos-titulo">Avisos</h3>
+            <ul class="inicio-lista-recados">
+              <!-- Para incluir um aviso, adicione outro artigo dentro desta lista. -->
+              <li>
+                <article class="inicio-recado-card">
+                  <h4>Espaço para avisos</h4>
+                  <p>Novos comunicados confirmados serão publicados aqui.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+
+          <section class="inicio-grupo-recados" aria-labelledby="inicio-eventos-titulo">
+            <h3 id="inicio-eventos-titulo">Eventos</h3>
+            <ul class="inicio-lista-recados">
+              <!-- Para incluir um evento, adicione outro artigo dentro desta lista. -->
+              <li>
+                <article class="inicio-recado-card">
+                  <h4>Espaço para eventos</h4>
+                  <p>Novos eventos confirmados serão publicados aqui.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- O rodapé é montado aqui pelo arquivo compartilhado/componentes.js -->
+  <!-- O rodapé é montado pelo arquivo principal main.js -->
   <div id="rodape"></div>
 
-  <!-- Primeiro os componentes comuns (menu e rodapé), depois o script da página -->
-  <script src="../../compartilhado/componentes.js"></script>
+  <!-- Primeiro os comportamentos globais, depois o JavaScript desta página -->
+  <script src="../../main.js"></script>
   <script src="pagina.js"></script>
 </body>
 </html>

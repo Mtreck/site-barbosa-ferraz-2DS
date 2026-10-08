@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colégio | Colégio Estadual Barbosa Ferraz</title>
-  <!-- Estilo comum a todo o site (equipe Identidade visual) -->
-  <link rel="stylesheet" href="../../compartilhado/estilo.css">
+  <!-- Estilo compartilhado por todas as páginas -->
+  <link rel="stylesheet" href="../../main.css">
   <!-- Estilo só desta página (equipe Colégio) -->
   <link rel="stylesheet" href="pagina.css">
 </head>
 <body data-pagina="colegio">
 
-  <!-- O menu é montado aqui pelo arquivo compartilhado/componentes.js -->
+  <!-- O menu é montado pelo arquivo principal main.js -->
   <div id="menu"></div>
 
   <main class="container">
@@ -363,11 +363,11 @@
 
   </main>
 
-  <!-- O rodapé é montado aqui pelo arquivo compartilhado/componentes.js -->
+  <!-- O rodapé é montado pelo arquivo principal main.js -->
   <div id="rodape"></div>
 
-  <!-- Primeiro os componentes comuns (menu e rodapé), depois o script da página -->
-  <script src="../../compartilhado/componentes.js"></script>
+  <!-- Primeiro os comportamentos globais, depois o JavaScript desta página -->
+  <script src="../../main.js"></script>
   <script src="pagina.js"></script>
 </body>
 </html>

@@ -1,17 +1,14 @@
 # Novo site do Colégio Estadual Barbosa Ferraz
 
-Projeto da turma do 2º ano do Técnico em Desenvolvimento de Sistemas.
-Vamos refazer o site do colégio (referência: https://www.colegiobarbosa.com.br/) usando somente HTML, CSS e JavaScript puros.
+Projeto da turma do 2º ano do Técnico em Desenvolvimento de Sistemas. O site é feito com HTML, CSS e JavaScript puros e pode ser aberto sem servidor ou instalação.
 
-Cada equipe cuida de uma página e trabalha SOMENTE na sua pasta. Assim ninguém mexe no arquivo do outro e os Pull Requests não dão conflito.
-
-Antes de tudo, leia o [REGRAS.md](REGRAS.md). Para conversar com a IA, use o [PROMPT-INICIAL.md](PROMPT-INICIAL.md).
+Antes de editar, leia [REGRAS.md](REGRAS.md). Cada equipe trabalha na própria pasta; arquivos globais e alterações em outras páginas precisam da autorização do professor.
 
 ## Como abrir o site
 
-Dê dois cliques no arquivo `index.html` da raiz. Ele leva para a página Início. Não precisa de servidor nem de instalar nada.
+Dê dois cliques no `index.html` da raiz. Ele encaminha para a página Início.
 
-## Estrutura de pastas
+## Estrutura do projeto
 
 ```text
 site-barbosa-ferraz/
@@ -19,22 +16,22 @@ site-barbosa-ferraz/
   REGRAS.md               regras do projeto (cole na IA)
   PROMPT-INICIAL.md       modelo de prompt para a IA
   index.html              redireciona para a página Início
-  .github/                modelo de Pull Request (professor)
-  compartilhado/          equipe Identidade visual
-    estilo.css            cores, fontes e classes de todo o site
-    componentes.js        monta o menu e o rodapé
-    imagens/
+  main.css                estilos e variáveis globais
+  main.js                 menu, rodapé e recursos compartilhados
+  imagens-principais/     imagens usadas em mais de uma página
   paginas/
-    identidade/           equipe Identidade visual (guia de estilo)
-    inicio/               equipe Início
-    colegio/              equipe Colégio
-    cursos/               equipe Cursos
-    eventos/              equipe Eventos
-    downloads/            equipe Downloads
-    contato/              equipe Contato
+    identidade/           guia de estilo e fichas da equipe
+    inicio/               página inicial
+    colegio/
+    cursos/
+    eventos/
+    downloads/
+    contato/
 ```
 
-Dentro de cada pasta de página:
+Cada pasta de página contém `index.html`, `pagina.css` e `pagina.js`. Imagens e fichas específicas ficam em subpastas da equipe.
+
+## Organização dos arquivos principais
 
 ```text
 index.html    conteúdo da página (dentro do <main>)
@@ -43,16 +40,26 @@ pagina.js     JavaScript só desta página
 imagens/      imagens da equipe
 ```
 
-## Passo a passo no Linux
+- `main.css` define as variáveis, os estilos globais, o menu, os botões e o rodapé.
+- `main.js` monta o menu e o rodapé para todas as páginas.
 
-### 1. Primeira vez: faça o fork e baixe
+- `main.css` define as variáveis, os estilos globais, o menu, os botões e o rodapé.
+- `main.js` monta o menu e o rodapé para todas as páginas.
+- `pagina.css` e `pagina.js` contêm somente os estilos e comportamentos específicos daquela página.
+- As páginas carregam `main.css` e `main.js` primeiro e, em seguida, seus próprios arquivos.
 
-No GitHub, clique em **Fork** no repositório do professor. Depois, no terminal:
+Os arquivos principais ficam na raiz e são mantidos pelo professor, com apoio da equipe Identidade visual. Não altere esses arquivos sem autorização.
 
-```bash
-git clone <link do SEU fork>
-cd site-barbosa-ferraz
-```
+## Trabalho das equipes
+
+1. Faça um fork do repositório no GitHub.
+2. Atualize a branch principal do seu fork antes de começar uma atividade.
+3. Crie uma branch com o nome combinado com o professor.
+4. Edite somente a pasta da sua equipe, salvo autorização explícita para uma mudança compartilhada.
+5. Confira `git status` antes de enviar alterações. Se aparecer algo fora da sua pasta sem autorização, consulte o professor.
+6. Abra um Pull Request e preencha o modelo em `.github/PULL_REQUEST_TEMPLATE.md`.
+
+O projeto não usa npm, frameworks, bibliotecas externas ou `fetch`.
 
 ### 2. Antes de cada entrega: sincronize o seu fork
 
