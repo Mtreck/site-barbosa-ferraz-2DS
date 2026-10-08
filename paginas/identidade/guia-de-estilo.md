@@ -1,7 +1,7 @@
 # Guia de estilo
 
 Preenchido pela equipe Identidade visual. As outras equipes seguem este guia.
-Os valores daqui devem ser os mesmos das variáveis em `compartilhado/estilo.css`.
+Os valores daqui devem ser os mesmos das variáveis em `main.css`.
 
 ## Paleta
 

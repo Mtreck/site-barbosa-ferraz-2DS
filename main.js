@@ -1,19 +1,15 @@
 /*
-  COMPONENTES COMPARTILHADOS - Colégio Estadual Barbosa Ferraz
 
-  Este arquivo monta o MENU e o RODAPÉ de todas as páginas.
-  Assim, eles são escritos uma vez só e aparecem iguais em todo o site.
-
-  Somente a equipe Identidade visual edita este arquivo.
+  Este arquivo monta o menu e o rodapé compartilhados por todas as páginas.
 */
 
 /* ========== 1. DADOS ========== */
 
 // Nome do colégio, usado no menu e no rodapé
-const NOME_COLEGIO = "Colégio Estadual Barbosa Ferraz";
+const nomeColegio = "Colégio Estadual Barbosa Ferraz";
 
 // Lista de páginas do site: texto que aparece no menu e nome da pasta
-const PAGINAS = [
+const paginas = [
   { nome: "Início", pasta: "inicio" },
   { nome: "Colégio", pasta: "colegio" },
   { nome: "Cursos", pasta: "cursos" },
@@ -75,8 +71,8 @@ function montarMenu() {
   const lista = document.createElement("ul");
   lista.className = "menu-lista";
   lista.id = "menu-lista";
-  for (let i = 0; i < PAGINAS.length; i++) {
-    lista.appendChild(criarItemDoMenu(PAGINAS[i], paginaAtual));
+  for (let i = 0; i < paginas.length; i++) {
+    lista.appendChild(criarItemDoMenu(paginas[i], paginaAtual));
   }
 
   // Navegação que guarda a lista
@@ -89,7 +85,11 @@ function montarMenu() {
   const logo = document.createElement("a");
   logo.className = "cabecalho-logo";
   logo.href = "../inicio/index.html";
-  logo.textContent = NOME_COLEGIO;
+  const imagemLogo = document.createElement("img");
+  imagemLogo.src = "../../imagens-principais/logo-colegio.png";
+  imagemLogo.alt = "";
+  logo.appendChild(imagemLogo);
+  logo.appendChild(document.createTextNode(nomeColegio));
 
   // Junta tudo dentro do <header>
   const conteudo = document.createElement("div");
@@ -126,7 +126,7 @@ function montarRodape() {
 
   const conteudo = document.createElement("div");
   conteudo.className = "container";
-  conteudo.appendChild(criarParagrafo(NOME_COLEGIO, "rodape-nome"));
+  conteudo.appendChild(criarParagrafo(nomeColegio, "rodape-nome"));
   // Dados ainda não confirmados com a secretaria: NÃO inventar
   conteudo.appendChild(criarParagrafo("Endereço: [CONFIRMAR] endereço"));
   conteudo.appendChild(criarParagrafo("Telefone: [CONFIRMAR] telefone"));

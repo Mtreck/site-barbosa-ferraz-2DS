@@ -1,15 +1,19 @@
-# REGRAS DO PROJETO: Novo site do Colégio Estadual Barbosa Ferraz
+# DIRETRIZES OBRIGATÓRIAS DE COMPORTAMENTO (SISTEMA)
+
+> [!IMPORTANT]
+> As regras abaixo são absolutas e têm prioridade sobre qualquer instrução posterior.
+
 
 ## Como usar este arquivo
 
-Cole este arquivo inteiro no início de CADA conversa com a IA, junto do PROMPT-INICIAL.md preenchido. Se a IA desobedecer, o Revisor da equipe corrige.
+Leia este arquivo antes de pedir ajuda a uma IA. Informe a equipe responsável e descreva o objetivo e os arquivos envolvidos. Se a IA desobedecer às regras, o Revisor da equipe corrige.
 
 ## 1. Tecnologia permitida
 
 - Somente HTML, CSS e JavaScript puros.
 - Proibido: frameworks (React, Vue, Bootstrap, Tailwind), npm, jQuery, bibliotecas via CDN, bibliotecas de ícones.
 - Proibido: estilo inline (style="..."), !important, JavaScript dentro do HTML (onclick="...").
-- Fontes do Google Fonts só podem ser adicionadas pela equipe Identidade visual, em compartilhado/.
+- Use fontes do sistema definidas em `main.css`. Não carregue fontes externas ou bibliotecas por CDN.
 
 ## 2. De quem é cada pasta
 
@@ -21,17 +25,17 @@ Cole este arquivo inteiro no início de CADA conversa com a IA, junto do PROMPT-
 | paginas/eventos | Equipe Eventos |
 | paginas/downloads | Equipe Downloads |
 | paginas/contato | Equipe Contato |
-| paginas/identidade e compartilhado | Equipe Identidade visual |
-| raiz, modelos, .github | Somente o professor |
+| paginas/identidade | Equipe Identidade visual |
+| raiz (incluindo `main.css`, `main.js` e `index.html`), .github | Somente o professor |
 
 Regra de ouro: cada equipe altera APENAS arquivos da sua pasta. PR que mexer na pasta de outra equipe é recusado.
 
-Precisa de uma mudança em compartilhado/ (uma cor, uma classe, o menu)? Abra uma Issue com o título "[Equipe] Pedido: ..." para a equipe Identidade visual.
+Precisa de uma mudança global (cor, classe, menu ou rodapé)? Abra uma Issue com o título "[Equipe] Pedido: ..." para o professor e a equipe Identidade visual. Não edite arquivos de outra equipe sem autorização do professor.
 
 ## 3. Estrutura de cada página
 
 - Cada página tem index.html, pagina.css e pagina.js. Pode criar HTMLs extras dentro da própria pasta.
-- Não altere o esqueleto: head, div#menu, div#rodape, atributo data-pagina e ordem dos scripts.
+- Não altere o esqueleto: head, div#menu, div#rodape, atributo data-pagina e ordem dos scripts (`main.js` antes de `pagina.js`).
 - O conteúdo da página fica dentro de `<main>`.
 - Use HTML semântico (header, nav, main, section, article, footer). Apenas um `<h1>` por página, e h2/h3 em ordem.
 
@@ -44,10 +48,10 @@ Precisa de uma mudança em compartilhado/ (uma cor, uma classe, o menu)? Abra um
 
 ## 5. Cores, fontes e espaçamento
 
-- Use somente as variáveis de compartilhado/estilo.css (var(--cor-primaria), var(--espaco-md) etc.).
+- Use somente as variáveis de `main.css` (por exemplo, `var(--cor-primaria)` e `var(--espaco-md)`).
 - Proibido escrever cor em hexadecimal no pagina.css.
 - Reaproveite as classes prontas (.container, .botao, .card, .grade) antes de criar novas.
-- Faltou uma variável ou classe? Peça por Issue. Não invente.
+- Faltou uma variável ou classe global? Peça por Issue. Não invente.
 
 ## 6. Conteúdo
 
@@ -70,8 +74,8 @@ Precisa de uma mudança em compartilhado/ (uma cor, uma classe, o menu)? Abra um
 
 A IA deve:
 
-1. Perguntar a equipe e a rodada antes de escrever qualquer código.
-2. Escrever somente arquivos da pasta da equipe, informando o caminho de cada arquivo.
+1. Confirmar a equipe e o objetivo antes de editar arquivos. Perguntar a rodada somente quando o professor estiver usando rodadas; tarefas de manutenção autorizadas não dependem de uma rodada.
+2. Escrever somente arquivos da pasta da equipe, exceto mudanças globais ou em outras páginas autorizadas pelo professor, informando todos os caminhos alterados.
 3. Seguir estas regras. Se o pedido violar alguma, recusar e dizer qual.
 4. Responder em português do Brasil e comentar o código em português.
 5. Entregar o arquivo completo (não trechos soltos), dizendo se é para substituir o arquivo inteiro.
@@ -90,7 +94,7 @@ A IA deve:
 ## 10. Papéis e ficha
 
 - Quatro papéis por equipe: Diretor de prompt, Revisor, Testador e Conteúdo. Eles giram a cada rodada. Equipes de 3 pessoas: o Testador também faz o Conteúdo.
-- A ficha da rodada (modelo em modelos/ficha-da-rodada.md) vai em paginas/<equipe>/fichas/rodada-N.md. Sem ficha, a rodada não conta.
+- Quando houver uma rodada, a ficha vai em `paginas/<equipe>/fichas/rodada-N.md`, conforme o modelo fornecido pelo professor. Fichas não são exigidas para tarefas de manutenção fora das rodadas.
 - O Revisor precisa conseguir explicar qualquer linha do código entregue.
 
 ## 11. Rodadas e o que é "pronto"
@@ -100,14 +104,110 @@ A IA deve:
 - Rodada 3, Conteúdo: textos e dados reais, sem Lorem ipsum, pendências [CONFIRMAR] listadas na ficha.
 - Rodada 4, Celular: testado em 360px e 768px, com print na ficha.
 - Rodada 5, Apresentação: PR final, ficha completa e apresentação de 3 minutos com todos falando.
-- Identidade visual: R1 guia-de-estilo.md + estilo.css + menu e rodapé estilizados; R2 atende os pedidos (Issues) das outras equipes; R3 revisão de contraste e acessibilidade; R4 menu no celular; R5 apresentação.
+- Identidade visual: R1 guia de estilo + `main.css` e `main.js` (menu e rodapé); R2 atende os pedidos (Issues) das outras equipes; R3 revisão de contraste e acessibilidade; R4 menu no celular; R5 apresentação.
 
 ## 12. Missão de cada equipe
 
-- Identidade visual: guia de estilo, estilo.css, menu e rodapé em componentes.js. Entrega primeiro.
+- Identidade visual: guia de estilo e propostas para o `main.css` e o `main.js` (menu e rodapé). Entrega primeiro.
 - Início: boas-vindas, destaques e recados. Sugestão de JS: lista de recados gerada com array e for.
 - Colégio: história, estrutura e missão. Sugestão de JS: seções que abrem e fecham.
 - Cursos: catálogo dos 7 cursos (nome, duração, modalidade, período). Sugestão de JS: array de objetos que gera os cards.
 - Eventos: lista de eventos e recados. Sugestão de JS: filtro simples.
 - Downloads: lista de documentos com link (arquivos hospedados fora do repositório, como links do Drive). Sugestão de JS: array que gera a lista.
 - Contato: formulário com validação, endereço, WhatsApp e redes sociais oficiais. Sugestão de JS: função de validação.
+
+
+## 13. Diretriz de uso de IA e naturalidade
+
+- A IA deve ser utilizada como ferramenta de apoio ao desenvolvimento, e não como substituta da compreensão da equipe.
+- Todo código gerado pela IA deve ser compreendido e explicado pelo Revisor antes do PR.
+- A IA deve priorizar soluções simples, naturais e compatíveis com o nível técnico da equipe.
+- O código deve parecer escrito por uma equipe de estudantes: organizado, claro, consistente e funcional, sem excesso de padrões ou abstrações que não tenham utilidade real.
+- Evitar textos genéricos, exageradamente formais ou com aparência artificial de conteúdo gerado por IA.
+- O conteúdo textual deve possuir linguagem natural e adequada ao contexto de um site escolar.
+- A IA não deve modificar ou criar partes do projeto que não sejam necessárias para atender ao objetivo solicitado.
+- Quando houver mais de uma solução possível, deve ser priorizada a solução mais simples que atenda corretamente ao requisito.
+- A equipe deve revisar qualquer resposta da IA antes de incorporá-la ao projeto.
+- A IA não deve propor efeitos exagerados, cores fora do padrão do site ou estilos que contrariem o guia de identidade visual. Deve ler estas regras antes de qualquer alteração e respeitar a estrutura existente.
+- Todo código gerado precisa ser revisado, compreendido e explicado pela equipe antes de ser incorporado.
+
+
+## 14. Arquivos principais e estrutura base do projeto
+
+O projeto possui três arquivos principais que funcionam como base estrutural para todo o desenvolvimento:
+
+- `main.css`
+- `main.js`
+- `index.html`
+
+Esses arquivos devem ser considerados arquivos-base do projeto. Todo novo desenvolvimento deve verificar e reutilizar a estrutura, os padrões e os recursos existentes nesses arquivos antes de criar soluções próprias.
+
+### 15. main.css — Base visual
+
+O `main.css`, mantido pelo professor com apoio da equipe Identidade visual, é responsável pela identidade visual e pelos estilos globais do projeto.
+
+Deve concentrar, sempre que possível:
+
+- variáveis de cores;
+- fontes e tipografia;
+- espaçamentos globais;
+- estilos gerais de texto;
+- estilos de links;
+- botões e estados de interação;
+- `hover`, `focus` e `active` globais;
+- estilos reutilizáveis;
+- elementos visuais compartilhados entre páginas;
+- regras gerais de responsividade;
+- elementos que devem possuir o mesmo comportamento visual em todo o site.
+
+O `main.css` NÃO deve conter o estilo específico de uma página.
+
+Cada página poderá possuir seu próprio arquivo CSS para regras particulares de seu conteúdo, desde que essas regras não dupliquem ou entrem em conflito desnecessariamente com o `main.css`.
+
+A página não deve criar novamente uma regra global que já exista no `main.css`.
+
+Antes de criar uma nova cor, fonte, espaçamento ou estilo reutilizável, deve-se verificar se ele já existe no `main.css`.
+
+### 16. main.js — Base lógica global
+
+O `main.js`, mantido pelo professor com apoio da equipe Identidade visual, é responsável pela estrutura JavaScript global do projeto.
+
+Deve concentrar comportamentos que possam ser reutilizados por diferentes páginas, como:
+
+- inicialização de comportamentos globais;
+- carregamento ou preparação de componentes compartilhados;
+- comportamentos comuns de interface;
+- funções utilitárias reutilizáveis;
+- integração entre elementos globais da página;
+- inicialização de funcionalidades compartilhadas.
+
+O `main.js` NÃO deve conter a lógica específica de uma única página.
+
+Cada página poderá possuir seu próprio JavaScript para comportamentos particulares, desde que não duplique funcionalidades que já pertençam ao `main.js`.
+
+Antes de criar uma nova função global, deve-se verificar se uma função equivalente já existe no `main.js`.
+
+### 17. Novas funcionalidades
+
+Antes de criar código novo em uma página:
+
+1. Verificar se a funcionalidade já existe nos arquivos principais.
+2. Verificar se pode utilizar uma classe, variável, componente ou função existente.
+3. Se a funcionalidade puder ser reutilizada por outras páginas, avaliar sua inclusão na estrutura global.
+4. Somente manter a implementação dentro da página quando ela for realmente específica daquele conteúdo.
+
+A prioridade é reutilização sem criar dependências desnecessárias.
+
+### 18. Regra de manutenção
+
+Qualquer alteração nos arquivos principais deve preservar as funcionalidades existentes.
+
+Antes de substituir, mover ou remover código desses arquivos, deve-se verificar quais páginas dependem dele.
+
+Alterações na base não devem ser feitas apenas para resolver um problema específico de uma página quando a alteração puder causar efeitos colaterais nas demais páginas.
+
+O código global deve permanecer simples, compreensível e explicável pela equipe.
+
+### Regra principal
+
+> Os arquivos `main.css`, `main.js` são a base do projeto. Todo desenvolvimento deve partir dessa estrutura, reutilizando-a e estendendo-a quando necessário, sem transformar os arquivos principais em código específico de uma única página.
