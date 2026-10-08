@@ -152,9 +152,13 @@
       <h2>Linha do tempo</h2>
       <p>
         Os principais momentos da escola, do primeiro loteamento da terra ao
-        ensino técnico de hoje.
+        ensino técnico de hoje. Use as setas ou os pontos para navegar.
       </p>
-      <ol class="colegio-tempo">
+
+      <div class="colegio-tempo-carrossel">
+        <button type="button" class="colegio-tempo-seta colegio-tempo-seta-anterior" aria-label="Ver momento anterior">‹</button>
+
+        <ol class="colegio-tempo" id="colegio-tempo-lista">
 
         <li class="colegio-tempo-item">
           <h3>Dez. 1940 — a terra que hoje é Ivaiporã</h3>
@@ -268,7 +272,13 @@
             Meio Ambiente, este último nas formas Integrada e Subsequente.
           </p>
         </li>
-      </ol>
+        </ol>
+
+        <button type="button" class="colegio-tempo-seta colegio-tempo-seta-proxima" aria-label="Ver próximo momento">›</button>
+      </div>
+
+      <!-- Pontos de navegação: criados pelo JavaScript, um para cada momento -->
+      <div class="colegio-tempo-pontos" id="colegio-tempo-pontos"></div>
     </section>
 
     <!-- Bloco 4: como o colégio é hoje (cartões com as dependências) -->
