@@ -6,6 +6,39 @@
 
 */
 
+/* Mantém na área de conteúdo o visual anterior sem alterar o tema global. */
+body[data-pagina="inicio"] main {
+  --cor-primaria: var(--inicio-cor-primaria-anterior);
+  --cor-secundaria: var(--inicio-cor-secundaria-anterior);
+  --cor-link: var(--cor-secundaria);
+  --cor-destaque: var(--cor-secundaria);
+  --cor-profunda: var(--inicio-cor-profunda-anterior);
+  --cor-fundo: var(--inicio-cor-fundo-anterior);
+  --cor-fundo-suave: var(--inicio-cor-fundo-suave-anterior);
+  --cor-texto: var(--cor-profunda);
+  --cor-texto-suave: var(--inicio-cor-texto-suave-anterior);
+  --cor-borda: var(--inicio-cor-borda-anterior);
+  --fonte-titulo: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --raio: 8px;
+  --sombra: var(--inicio-sombra-anterior);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+}
+
+body[data-pagina="inicio"] main h1,
+body[data-pagina="inicio"] main h2,
+body[data-pagina="inicio"] main h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+
+body[data-pagina="inicio"] main h3 {
+  font-size: 1.17em;
+}
+
 /* Foco visível para os links próprios da página */
 .inicio-hero a:focus-visible,
 .inicio-card a:focus-visible {
