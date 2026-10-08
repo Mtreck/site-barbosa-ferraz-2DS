@@ -5,3 +5,111 @@
   Use apenas as variáveis de main.css (nada de cor em hexadecimal).
   Classes desta página começam com "colegio-" (ex.: .colegio-titulo).
 */
+
+/* Respiro entre os blocos da página (ex.: entre os cards de Estrutura e a Missão) */
+.colegio-secao {
+  margin-top: var(--espaco-xl);
+}
+
+/* ========== Linha do tempo: carrossel horizontal ========== */
+
+/* Linha com a seta esquerda, a lista e a seta direita */
+.colegio-tempo-carrossel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espaco-sm);
+}
+
+/* Botão redondo das setas */
+.colegio-tempo-seta {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-top: var(--espaco-lg);
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  background-color: var(--cor-superficie);
+  color: var(--cor-primaria);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.colegio-tempo-seta:hover,
+.colegio-tempo-seta:focus-visible {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-fundo);
+}
+
+/* Seta desativada quando já está no primeiro ou no último momento */
+.colegio-tempo-seta:disabled {
+  opacity: 0.35;
+  cursor: default;
+  background-color: var(--cor-superficie);
+  color: var(--cor-primaria);
+}
+
+/* A lista rola na horizontal; cada item "encaixa" ao parar de rolar */
+.colegio-tempo {
+  display: flex;
+  gap: var(--espaco-lg);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+  padding-top: var(--espaco-lg);
+  padding-bottom: var(--espaco-sm);
+  scrollbar-width: thin;
+}
+
+/* Cada momento tem largura fixa e fica "pendurado" numa linha com um ponto */
+.colegio-tempo-item {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  position: relative;
+  padding-top: var(--espaco-md);
+  border-top: 3px solid var(--cor-borda);
+}
+
+/* O ponto que marca o momento em cima da linha horizontal */
+.colegio-tempo-item::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--cor-secundaria);
+  border: 2px solid var(--cor-fundo);
+}
+
+/* Pontos de navegação embaixo do carrossel */
+.colegio-tempo-pontos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--espaco-xs);
+  margin-top: var(--espaco-md);
+}
+
+/* Cada ponto é criado pelo JavaScript (veja pagina.js) */
+.colegio-tempo-ponto {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--cor-borda);
+  cursor: pointer;
+}
+
+.colegio-tempo-ponto:hover,
+.colegio-tempo-ponto:focus-visible {
+  background-color: var(--cor-secundaria);
+}
+
+/* O ponto do momento atual fica mais comprido, como uma pílula */
+.colegio-tempo-ponto.ativo {
+  width: 26px;
+  background-color: var(--cor-primaria);
+}

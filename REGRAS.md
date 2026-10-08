@@ -57,7 +57,7 @@ Precisa de uma mudança global (cor, classe, menu ou rodapé)? Abra uma Issue co
 
 - Somente informação real do colégio (site atual: https://www.colegiobarbosa.com.br/ ou o que o professor/secretaria fornecer).
 - Proibido inventar telefone, endereço, datas, nomes ou números. Se faltar, escreva [CONFIRMAR] e anote na ficha.
-- Proibido Lorem ipsum a partir da Rodada 3.
+- Proibido Lorem ipsum no conteúdo entregue.
 - Imagens: do acervo do colégio ou criadas por IA. Proibido foto identificável de aluno menor de idade ou de professor sem autorização por escrito.
 - Imagens na pasta imagens/ da equipe, até 300 KB cada, formatos jpg, png, webp ou svg, sempre com alt descritivo.
 - Nunca coloque chaves de API, senhas ou dados pessoais no código.
@@ -79,32 +79,37 @@ A IA deve:
 3. Seguir estas regras. Se o pedido violar alguma, recusar e dizer qual.
 4. Responder em português do Brasil e comentar o código em português.
 5. Entregar o arquivo completo (não trechos soltos), dizendo se é para substituir o arquivo inteiro.
+3. Seguir estas regras. Se o pedido violar alguma, recusar e dizer qual.
+4. Responder em português do Brasil e comentar o código em português.
+5. Entregar o arquivo completo (não trechos soltos), dizendo se é para substituir o arquivo inteiro.
 6. Nunca inventar informação do colégio. Usar [CONFIRMAR].
 7. Terminar cada resposta com "O que cada parte faz", em até 5 linhas simples, para o Revisor.
 
 ## 9. Git e Pull Request
 
-- Nunca trabalhe na main. Branch: equipe-<nome>-rodada-<numero> (ex.: equipe-cursos-rodada-1).
+- Nunca trabalhe na main. Branch: equipe-<nome> (ex.: equipe-cursos).
 - Commit em português: "<equipe>: o que mudou" (ex.: "cursos: adiciona estrutura da página").
-- Um PR por rodada, com título "[Cursos] Rodada 1: estrutura". Preencha o modelo de PR inteiro.
+- Abra um PR para cada entrega, com título "[Cursos] nome da entrega". Preencha o modelo de PR inteiro.
 - Ninguém faz merge do próprio PR. O merge é do professor.
 - Antes do PR, rode git status e confira que só mexeu na sua pasta.
-- No início de cada rodada, sincronize o fork (Sync fork no GitHub e git pull).
+- Antes de cada entrega, sincronize o fork (Sync fork no GitHub e git pull).
 
-## 10. Papéis e ficha
+## 10. Papéis
 
 - Quatro papéis por equipe: Diretor de prompt, Revisor, Testador e Conteúdo. Eles giram a cada rodada. Equipes de 3 pessoas: o Testador também faz o Conteúdo.
 - Quando houver uma rodada, a ficha vai em `paginas/<equipe>/fichas/rodada-N.md`, conforme o modelo fornecido pelo professor. Fichas não são exigidas para tarefas de manutenção fora das rodadas.
 - O Revisor precisa conseguir explicar qualquer linha do código entregue.
+- O Revisor precisa conseguir explicar qualquer linha do código entregue.
 
-## 11. Rodadas e o que é "pronto"
+## 11. O que é "pronto"
 
-- Rodada 1, Estrutura: index.html completo em HTML semântico, com todos os blocos da página (placeholders permitidos), sem estilo próprio. Ficha entregue.
-- Rodada 2, Estilo: pagina.css usando somente variáveis, seguindo o guia da equipe Identidade.
-- Rodada 3, Conteúdo: textos e dados reais, sem Lorem ipsum, pendências [CONFIRMAR] listadas na ficha.
-- Rodada 4, Celular: testado em 360px e 768px, com print na ficha.
-- Rodada 5, Apresentação: PR final, ficha completa e apresentação de 3 minutos com todos falando.
-- Identidade visual: R1 guia de estilo + `main.css` e `main.js` (menu e rodapé); R2 atende os pedidos (Issues) das outras equipes; R3 revisão de contraste e acessibilidade; R4 menu no celular; R5 apresentação.
+- Estrutura: index.html completo em HTML semântico, com todos os blocos da página (placeholders permitidos), sem estilo próprio.
+- Estilo: pagina.css usando somente variáveis, seguindo o guia da equipe Identidade.
+- Conteúdo: textos e dados reais, sem Lorem ipsum, pendências [CONFIRMAR] listadas na ficha.
+- Celular: testado em 360px e 768px, com print na ficha.
+- Apresentação: PR final, ficha completa e apresentação de 3 minutos com todos falando.
+- Identidade visual: guia de estilo + `main.css` e `main.js` (menu e rodapé), atendendo os pedidos (Issues) das outras equipes, com revisão de contraste/acessibilidade e menu no celular.
+- Em rodadas, a ficha vai em `paginas/<equipe>/fichas/rodada-N.md` conforme o professor.
 
 ## 12. Missão de cada equipe
 
