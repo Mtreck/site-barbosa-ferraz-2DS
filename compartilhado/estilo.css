@@ -1,29 +1,37 @@
 /*
   ESTILO COMPARTILHADO - Colégio Estadual Barbosa Ferraz
 
-  ATENÇÃO: todos os valores abaixo são PROVISÓRIOS.
-  A equipe Identidade visual vai substituí-los pelas cores, fontes e
-  espaçamentos definidos em paginas/identidade/guia-de-estilo.md.
+  Identidade visual definida pela equipe Identidade visual.
+  Paleta oficial do colégio: azul-marinho como cor institucional, azul vivo
+  para links e amarelo como destaque de ação (nunca como cor de texto sobre
+  fundo claro, porque não tem contraste suficiente para ser lido). Uma única
+  família tipográfica (Public Sans, desenhada para serviços públicos
+  digitais) é usada em todo o site, variando peso e tamanho.
 
   Somente a equipe Identidade visual edita este arquivo.
   As outras equipes usam as variáveis daqui, por exemplo: var(--cor-primaria).
   Precisa de algo novo? Abra uma Issue "[Equipe] Pedido: ...".
 */
 
+/* Fonte única do site, carregada só uma vez aqui (equipe Identidade visual) */
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap");
+
 /* ========== 1. VARIÁVEIS (cores, fontes, espaços) ========== */
 :root {
-  /* Cores */
-  --cor-primaria: #1f4e79;      /* cor principal (menu, títulos) */
-  --cor-secundaria: #2e7d5b;    /* cor de apoio */
-  --cor-destaque: #f2b705;      /* chama atenção (botões, avisos) */
-  --cor-fundo: #f7f7f5;         /* fundo das páginas */
-  --cor-texto: #1e1e1e;         /* texto principal */
-  --cor-texto-suave: #5a5a5a;   /* textos secundários */
-  --cor-borda: #d9d9d9;         /* linhas e bordas */
+  /* Cores: azul-marinho como cor institucional, amarelo só como destaque */
+  --cor-primaria: #011142;       /* azul-marinho escuro (cabeçalho, títulos, botão) */
+  --cor-secundaria: #004c94;     /* azul médio (hover, acento dos cards) */
+  --cor-link: #4169e1;           /* azul vivo (links dentro do texto) */
+  --cor-destaque: #fff52b;       /* amarelo (ação, link ativo, ícone - nunca texto em fundo claro) */
+  --cor-fundo: #f5f7fb;          /* fundo claro, levemente azulado */
+  --cor-superficie: #ffffff;     /* fundo de cards e caixas */
+  --cor-texto: #14293a;          /* texto principal, fundo do rodapé */
+  --cor-texto-suave: #4f6378;    /* textos secundários */
+  --cor-borda: #dce3ea;          /* linhas e bordas */
 
-  /* Fontes: pilhas de fontes do sistema (não precisam de internet) */
-  --fonte-titulo: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  /* Fonte única do site: muda o peso, não a família, entre título e texto */
+  --fonte-titulo: "Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --fonte-texto: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   /* Espaçamentos, do menor para o maior */
   --espaco-xs: 4px;
@@ -33,9 +41,9 @@
   --espaco-xl: 64px;
 
   /* Outros */
-  --raio: 8px;                                  /* arredondamento dos cantos */
-  --sombra: 0 2px 8px rgba(0, 0, 0, 0.12);      /* sombra leve */
-  --largura-max: 1100px;                        /* largura máxima do conteúdo */
+  --raio: 6px;                                        /* arredondamento dos cantos, discreto */
+  --sombra: 0 4px 16px rgba(1, 17, 66, 0.14);          /* sombra leve, na cor da marca */
+  --largura-max: 1100px;                               /* largura máxima do conteúdo */
 }
 
 /* ========== 2. RESET SIMPLES ========== */
@@ -59,6 +67,12 @@ img {
   display: block;
 }
 
+/* Foco visível e consistente em qualquer elemento navegável pelo teclado */
+:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
 /* ========== 3. BASE DA PÁGINA ========== */
 body {
   font-family: var(--fonte-texto);
@@ -78,12 +92,32 @@ main {
   padding-bottom: var(--espaco-lg);
 }
 
-h1,
-h2,
-h3 {
+/* Título principal da página: maior peso e tamanho, cresce com a tela */
+h1 {
   font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  letter-spacing: -0.01em;
+  color: var(--cor-primaria);
+  line-height: 1.15;
+  margin-bottom: var(--espaco-md);
+}
+
+h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: clamp(1.375rem, 1.1rem + 1.1vw, 1.875rem);
   color: var(--cor-primaria);
   line-height: 1.25;
+  margin-bottom: var(--espaco-md);
+}
+
+h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--cor-primaria);
+  line-height: 1.3;
   margin-bottom: var(--espaco-md);
 }
 
@@ -92,7 +126,7 @@ p {
 }
 
 a {
-  color: var(--cor-primaria);
+  color: var(--cor-link);
 }
 
 /* ========== 4. CLASSES REUTILIZÁVEIS ========== */
@@ -116,13 +150,14 @@ a {
   background-color: var(--cor-primaria);
   color: var(--cor-fundo);
   font-family: var(--fonte-texto);
+  font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
   cursor: pointer;
 }
 
 .botao:hover,
-.botao:focus {
+.botao:focus-visible {
   background-color: var(--cor-secundaria);
   border-color: var(--cor-secundaria);
 }
@@ -134,16 +169,17 @@ a {
 }
 
 .botao-secundario:hover,
-.botao-secundario:focus {
+.botao-secundario:focus-visible {
   color: var(--cor-fundo);
 }
 
-/* Caixa com fundo, borda e sombra (para cursos, eventos, avisos...) */
+/* Caixa para destacar conteúdo (cursos, eventos, avisos...) */
+/* O acento na borda esquerda identifica o bloco, em vez de uma sombra igual em tudo */
 .card {
-  background-color: #ffffff;
+  background-color: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-secundaria);
   border-radius: var(--raio);
-  box-shadow: var(--sombra);
   padding: var(--espaco-md);
 }
 
@@ -171,11 +207,24 @@ a {
   padding-bottom: var(--espaco-md);
 }
 
+/* Nome do colégio junto da marca (ícone de araucária, veja componentes.js) */
 .cabecalho-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-sm);
   color: var(--cor-fundo);
   font-family: var(--fonte-titulo);
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.0625rem;
   text-decoration: none;
+}
+
+/* Ícone da araucária, desenhado em componentes.js, pinta com a cor atual do texto */
+.cabecalho-marca {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--cor-destaque);
 }
 
 /* Botão "Menu": aparece só no celular */
@@ -185,6 +234,8 @@ a {
   border-radius: var(--raio);
   background-color: transparent;
   color: var(--cor-fundo);
+  font-family: var(--fonte-texto);
+  font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
 }
@@ -212,18 +263,20 @@ a {
   padding: var(--espaco-sm);
   border-radius: var(--raio);
   color: var(--cor-fundo);
+  font-weight: 500;
   text-decoration: none;
 }
 
 .menu-lista a:hover,
-.menu-lista a:focus {
+.menu-lista a:focus-visible {
   text-decoration: underline;
 }
 
 /* Link da página atual */
 .menu-lista a.ativo {
   background-color: var(--cor-destaque);
-  color: var(--cor-texto);
+  color: var(--cor-primaria);
+  font-weight: 700;
 }
 
 /* Telas a partir de 768px: menu sempre visível e botão escondido */
@@ -256,5 +309,6 @@ a {
 }
 
 .rodape-nome {
-  font-weight: bold;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
 }

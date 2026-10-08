@@ -86,10 +86,18 @@ function montarMenu() {
   nav.appendChild(lista);
 
   // Nome do colégio, que também leva para o Início
+  // O ícone é uma araucária (pinheiro-do-paraná) simplificada, símbolo do estado
   const logo = document.createElement("a");
   logo.className = "cabecalho-logo";
   logo.href = "../inicio/index.html";
-  logo.textContent = NOME_COLEGIO;
+  logo.innerHTML =
+    '<svg class="cabecalho-marca" viewBox="0 0 32 32" aria-hidden="true" focusable="false">' +
+    '<rect x="14" y="23" width="4" height="7" fill="currentColor"/>' +
+    '<polygon points="4,23 28,23 22,16 10,16" fill="currentColor"/>' +
+    '<polygon points="8,17 24,17 19,11 13,11" fill="currentColor"/>' +
+    '<polygon points="12,12 20,12 17,6 15,6" fill="currentColor"/>' +
+    "</svg>" +
+    "<span>" + NOME_COLEGIO + "</span>";
 
   // Junta tudo dentro do <header>
   const conteudo = document.createElement("div");
