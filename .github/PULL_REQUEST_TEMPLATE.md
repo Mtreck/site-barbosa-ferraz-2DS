@@ -1,7 +1,5 @@
 **Equipe:**
 
-**Rodada:**
-
 **Resumo (2 linhas):**
 
 ## Checklist
@@ -11,5 +9,4 @@
 - [ ] Todas as imagens têm alt
 - [ ] Funciona em 360px sem rolagem horizontal
 - [ ] Sem erros no console
-- [ ] A ficha da rodada está na pasta fichas/
 - [ ] O Revisor sabe explicar o código
