@@ -2,6 +2,275 @@
   Estilo da página Cursos
   Equipe: Cursos
   Somente a equipe Cursos edita este arquivo.
-  Use apenas as variáveis de main.css (nada de cor em hexadecimal).
-  Classes desta página começam com "cursos-" (ex.: .cursos-titulo).
+  Classes desta página começam com "cursos-" (ex.: .cursos-card-nome).
+
+  Regras de ouro deste arquivo:
+  - nada de cor em hexadecimal: use as variáveis do main.css;
+  - nada de !important;
+  - reaproveite .container, .card, .grade e .botao antes de criar algo novo.
 */
+
+/* ========== 1. APRESENTAÇÃO ========== */
+
+.cursos-apresentacao {
+  background-color: var(--cor-fundo-suave);
+  padding-bottom: var(--espaco-lg);
+}
+
+/* Parágrafo de abertura: largura confortável para o texto não ficar largo demais */
+.cursos-apresentacao-texto,
+.cursos-secao-texto {
+  max-width: 70ch;
+  color: var(--cor-texto);
+}
+
+/* Destaque com a borda azul da esquerda: é o que chama o olho para as inscrições */
+.cursos-apresentacao-destaque {
+  max-width: 70ch;
+  margin-top: var(--espaco-md);
+  padding: var(--espaco-md);
+  border-left: 4px solid var(--cor-destaque);
+  border-radius: var(--raio);
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra-card);
+}
+
+/* ========== 2. CATÁLOGO ========== */
+
+/* Fundo branco para os cards cinza-claros da área de modalidades */
+.cursos-catalogo {
+  padding-top: var(--espaco-xl);
+  padding-bottom: var(--espaco-xl);
+}
+
+/* A .grade do main.css já dá as colunas; a lista é usada só para tirar o
+   marcador de lista e alinhar os cards pelo topo */
+.cursos-lista {
+  list-style: none;
+  align-items: start;
+  margin-top: var(--espaco-lg);
+}
+
+.cursos-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow 0.2s ease, border-left-color 0.2s ease;
+}
+
+/* O filtro usa o atributo hidden do JavaScript. Como o card tem display:flex
+   (que ganha do padrão do navegador), o "none" precisa ser escrito aqui. */
+.cursos-card[hidden] {
+  display: none;
+}
+
+/* Interação: a sombra cresce e a faixa azul fica mais forte */
+.cursos-card:hover {
+  box-shadow: var(--sombra-card-hover);
+  border-left-color: var(--cor-profunda);
+}
+
+/* Área da imagem: altura fixa para os cards ficarem iguais na mesma linha */
+.cursos-card-imagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  margin-bottom: var(--espaco-md);
+}
+
+/* Imagem real: cabe inteira na área, sem cortar nem distorcer */
+.cursos-card-imagem img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Aviso que some quando o curso ganhar imagem */
+.cursos-card-aviso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: var(--cor-fundo-suave);
+  color: var(--cor-texto-suave);
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.cursos-card-nome {
+  color: var(--cor-profunda);
+  font-size: 1.1rem;
+}
+
+.cursos-card-dados {
+  list-style: none;
+  margin-bottom: var(--espaco-md);
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+.cursos-card-dados li + li {
+  margin-top: var(--espaco-xs);
+}
+
+.cursos-card-dados strong {
+  color: var(--cor-profunda);
+}
+
+/* Empurra a linha de vagas para o fim do card, deixando todos com a mesma altura */
+.cursos-card-vagas {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-top: var(--espaco-sm);
+  border-top: 1px solid var(--cor-fundo-suave);
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+}
+
+/* Aviso de "nenhum curso nessa modalidade" */
+.cursos-vazio {
+  margin-top: var(--espaco-lg);
+  padding: var(--espaco-md);
+  border-radius: var(--raio);
+  background-color: var(--cor-fundo-suave);
+  color: var(--cor-texto-suave);
+  text-align: center;
+}
+
+/* ========== 3. FILTRO POR MODALIDADE ========== */
+
+.cursos-filtros {
+  margin-top: var(--espaco-lg);
+  padding: var(--espaco-md);
+  border-radius: var(--raio);
+  background-color: var(--cor-fundo-suave);
+}
+
+.cursos-filtros-rotulo {
+  margin-bottom: var(--espaco-sm);
+  color: var(--cor-profunda);
+  font-weight: 700;
+}
+
+/* Botões com flexbox: quebram de linha sozinhos quando não cabem na tela */
+.cursos-filtros-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-sm);
+}
+
+/* Botão escolhido: fundo azul e texto branco */
+.cursos-filtro.ativo {
+  background-color: var(--cor-profunda);
+  border-color: var(--cor-profunda);
+  color: var(--cor-fundo);
+}
+
+.cursos-contagem {
+  margin-top: var(--espaco-sm);
+  margin-bottom: 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+/* ========== 4. MODALIDADES ========== */
+
+/* Fundo cinza-claro para separar esta seção do catálogo */
+.cursos-modalidades {
+  padding-top: var(--espaco-xl);
+  padding-bottom: var(--espaco-xl);
+  background-color: var(--cor-fundo-suave);
+}
+
+.cursos-modalidade {
+  height: 100%;
+}
+
+.cursos-modalidade-nome {
+  color: var(--cor-primaria);
+  font-size: 1.1rem;
+}
+
+.cursos-modalidade p {
+  margin-bottom: 0;
+  color: var(--cor-texto);
+}
+
+/* ========== 5. INSCRIÇÃO ========== */
+
+.cursos-inscricao {
+  padding-top: var(--espaco-xl);
+  padding-bottom: var(--espaco-xl);
+}
+
+.cursos-passos {
+  margin-top: var(--espaco-md);
+  padding-left: var(--espaco-lg);
+}
+
+.cursos-passo {
+  margin-bottom: var(--espaco-md);
+}
+
+.cursos-passo-nome {
+  margin-bottom: var(--espaco-xs);
+  color: var(--cor-primaria);
+  font-size: 1.05rem;
+}
+
+.cursos-passo p {
+  margin-bottom: 0;
+  color: var(--cor-texto);
+}
+
+.cursos-inscricao-fim {
+  margin-top: var(--espaco-lg);
+  padding-top: var(--espaco-md);
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-texto);
+}
+
+/* ========== 6. AJUSTES DE TELA ========== */
+
+/* Tablet: duas colunas, com a frase curta dos cards */
+@media (min-width: 600px) {
+  .cursos-apresentacao {
+    padding-top: var(--espaco-sm);
+  }
+}
+
+/* Computador: três colunas */
+@media (min-width: 900px) {
+  .cursos-lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Celular: menos respiro e fonte da contagem menor */
+@media (max-width: 480px) {
+  .cursos-catalogo,
+  .cursos-modalidades,
+  .cursos-inscricao {
+    padding-top: var(--espaco-lg);
+    padding-bottom: var(--espaco-lg);
+  }
+
+  .cursos-filtros-botoes .cursos-filtro {
+    flex: 1 1 auto;
+  }
+
+  .cursos-passos {
+    padding-left: var(--espaco-md);
+  }
+}
+
+/* Quem prefere menos movimento não recebe a troca de sombra */
+@media (prefers-reduced-motion: reduce) {
+  .cursos-card,
+  .cursos-card:hover {
+    transition: none;
+  }
+}
