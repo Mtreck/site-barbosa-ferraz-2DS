@@ -224,8 +224,8 @@
     </section>
 
     <!-- Bloco 3: linha do tempo, para o aluno bater o olho nas datas.
-         A lista rola na horizontal; as setas e a barra de progresso são
-         ligadas pelo JavaScript da página. -->
+         A lista rola na horizontal; as duas setas são ligadas pelo JavaScript
+         da página. -->
     <section id="linha-do-tempo" class="colegio-secao">
       <h2>Linha do tempo</h2>
       <p class="colegio-secao-intro">
@@ -233,9 +233,9 @@
         ensino técnico de hoje. Arraste com o dedo ou use as setas para avançar.
       </p>
 
-      <!-- No celular o trilho ocupa a linha inteira e as setas ficam na linha
-           de baixo, ao lado da barra de progresso. A partir de 768px as setas
-           voltam para as laterais do trilho. -->
+      <!-- No celular o trilho ocupa a linha inteira e as duas setas ficam
+           centralizadas logo abaixo dele. A partir de 768px elas voltam para
+           as laterais do trilho. -->
       <div class="colegio-tempo">
         <ol class="colegio-tempo-lista" id="colegio-tempo-lista" tabindex="0">
 
@@ -371,12 +371,6 @@
                 aria-controls="colegio-tempo-lista" aria-label="Momento anterior">
           <span aria-hidden="true">&#8249;</span>
         </button>
-
-        <!-- Única barra de progresso da linha do tempo. O elemento <progress>
-             do HTML já é acessível: os leitores de tela anunciam "item 3 de 13".
-             O JavaScript só troca o atributo value. -->
-        <progress class="colegio-tempo-progresso" id="colegio-tempo-progresso"
-                  max="13" value="1" aria-label="Progresso da linha do tempo"></progress>
 
         <button type="button" class="colegio-tempo-seta colegio-tempo-seta-proxima"
                 aria-controls="colegio-tempo-lista" aria-label="Próximo momento">
