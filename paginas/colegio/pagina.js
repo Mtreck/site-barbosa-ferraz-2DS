@@ -64,17 +64,16 @@ function iniciarHistoria() {
 }
 
 /* ========== 2. LINHA DO TEMPO ========== */
-// Liga as duas setas à barra de progresso.
+// Liga as duas setas à navegação da linha do tempo.
 
 function iniciarLinhaDoTempo() {
   const lista = document.getElementById("colegio-tempo-lista");
-  const progresso = document.getElementById("colegio-tempo-progresso");
   const aviso = document.getElementById("colegio-tempo-aviso");
   const setaAnterior = document.querySelector(".colegio-tempo-seta-anterior");
   const setaProxima = document.querySelector(".colegio-tempo-seta-proxima");
 
   // Se a página não tem a linha do tempo completa, não faz nada
-  if (!lista || !progresso || !setaAnterior || !setaProxima) {
+  if (!lista || !setaAnterior || !setaProxima) {
     return;
   }
 
@@ -86,10 +85,6 @@ function iniciarLinhaDoTempo() {
   // passar por todos os momentos até chegar no destino.
   let travado = false;
   let soltaTravagem = null;
-
-  // A barra tem um passo por momento
-  progresso.max = itens.length;
-  progresso.value = 1;
 
   // Rola a lista até o momento escolhido.
   // Usa scrollTo e não scrollIntoView: o scrollIntoView também mexe na rolagem
@@ -142,12 +137,10 @@ function iniciarLinhaDoTempo() {
     return 0;
   }
 
-  // Anda a barra de progresso e desativa as setas nas pontas
+  // Marca o momento atual e desativa as setas nas pontas
   function marcarAtivo(indice) {
     const mudouDeMomento = indice !== indiceAtual;
     indiceAtual = indice;
-
-    progresso.value = indiceAtual + 1;
 
     setaAnterior.disabled = indiceAtual === 0;
     setaProxima.disabled = indiceAtual === itens.length - 1;
