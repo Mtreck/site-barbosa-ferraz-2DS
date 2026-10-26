@@ -370,104 +370,88 @@ button:focus-visible {
 }
 
 /* Grade de áreas institucionais (WhatsApp, Instagram, Facebook, Endereço) */
+/* Sem caixas/quadrados em volta; apenas linhas divisórias sutis entre cada bloco */
 .rodape-grade {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
-  gap: var(--espaco-md);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: stretch;
+  gap: 0;
 }
 
-/* Cartão clicável individual do rodapé */
-.rodape-card {
+/* Item clicável independente e limpo */
+.rodape-item {
   display: flex;
   align-items: center;
   gap: var(--espaco-md);
-  padding: var(--espaco-md);
-  border-radius: var(--raio);
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  flex: 1 1 220px;
+  padding: var(--espaco-md) var(--espaco-lg);
   color: var(--cor-fundo);
   text-decoration: none;
-  min-height: 96px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
-.rodape-card:hover {
-  transform: translateY(-3px);
-  background-color: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+/* Remove a linha do último item */
+.rodape-item:last-child {
+  border-right: none;
 }
 
-.rodape-card:focus-visible {
-  outline: 3px solid var(--cor-fundo);
-  outline-offset: 3px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: var(--cor-fundo);
-  transform: translateY(-2px);
+.rodape-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  opacity: 0.95;
 }
 
-.rodape-card:active {
-  transform: translateY(0);
+.rodape-item:focus-visible {
+  outline: 2px solid var(--cor-fundo);
+  outline-offset: 2px;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Contêiner do ícone: garante contraste e fundo uniforme para todos os logotipos */
-.rodape-card-icone-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  flex-shrink: 0;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.rodape-card:hover .rodape-card-icone-wrapper {
-  background-color: rgba(255, 255, 255, 0.25);
-  transform: scale(1.06);
-}
-
-/* Ícone da rede / contato sem distorção */
-.rodape-card-icone {
-  width: 32px;
-  height: 32px;
+/* Ícone da rede / contato sem moldura externa */
+.rodape-item-icone {
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transition: transform 0.2s ease;
 }
 
-/* Para ícones muito escuros sobre o fundo, destaca suavemente para máxima legibilidade */
+.rodape-item:hover .rodape-item-icone {
+  transform: scale(1.08);
+}
+
+/* Para o ícone do Facebook, remove qualquer filtro ou efeito de brilho */
 .rodape-card-icone-facebook {
-  filter: brightness(1.35) contrast(1.15) drop-shadow(0 1px 3px rgba(255, 255, 255, 0.35));
+  filter: none;
 }
 
-.rodape-card-info {
+.rodape-item-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
   line-height: 1.35;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
-.rodape-card-titulo {
+.rodape-item-titulo {
   font-family: var(--fonte-titulo);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--cor-fundo);
 }
 
-.rodape-card-linha {
-  color: rgba(255, 255, 255, 0.88);
+.rodape-item-linha {
+  color: rgba(255, 255, 255, 0.85);
   word-break: break-word;
 }
 
-.rodape-card-nota {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.65);
+.rodape-item-nota {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
   font-style: italic;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .rodape-base {
@@ -558,9 +542,18 @@ button:focus-visible {
     padding-bottom: var(--espaco-md);
   }
 
-  .rodape-card {
-    min-height: auto;
-    padding: var(--espaco-sm) var(--espaco-md);
+  .rodape-grade {
+    flex-direction: column;
+  }
+
+  .rodape-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: var(--espaco-sm) var(--espaco-xs);
+  }
+
+  .rodape-item:last-child {
+    border-bottom: none;
   }
 }
 
@@ -575,11 +568,11 @@ button:focus-visible {
     scroll-behavior: auto !important;
   }
 
-  .rodape-card,
-  .rodape-card:hover,
-  .rodape-card:focus-visible,
-  .rodape-card-icone,
-  .rodape-card:hover .rodape-card-icone {
+  .rodape-item,
+  .rodape-item:hover,
+  .rodape-item:focus-visible,
+  .rodape-item-icone,
+  .rodape-item:hover .rodape-item-icone {
     transform: none;
   }
 }

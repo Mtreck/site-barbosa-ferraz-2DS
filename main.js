@@ -109,40 +109,35 @@ function montarMenu() {
 
 /* ========== 3. RODAPÉ ========== */
 
-// Cria um cartão de contato/rede social do rodapé
+// Cria um item de contato/rede social do rodapé (resumido e limpo)
 function criarCardRodape(dados) {
   const link = document.createElement("a");
-  link.className = "rodape-card";
+  link.className = "rodape-item";
   link.href = dados.url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
   link.setAttribute("aria-label", dados.ariaLabel);
 
-  // Wrapper do ícone para visual uniforme e elegante
-  const iconeWrapper = document.createElement("div");
-  iconeWrapper.className = "rodape-card-icone-wrapper";
-
-  // Imagem do ícone
+  // Imagem do ícone sem caixas ou molduras
   const imagem = document.createElement("img");
-  imagem.className = dados.classeIcone ? "rodape-card-icone " + dados.classeIcone : "rodape-card-icone";
+  imagem.className = dados.classeIcone ? "rodape-item-icone " + dados.classeIcone : "rodape-item-icone";
   imagem.src = dados.icone;
   imagem.alt = ""; // Decorativo pois o texto descritivo e o aria-label já identificam o link
-  iconeWrapper.appendChild(imagem);
-  link.appendChild(iconeWrapper);
+  link.appendChild(imagem);
 
-  // Bloco de texto
+  // Bloco de texto resumido
   const info = document.createElement("div");
-  info.className = "rodape-card-info";
+  info.className = "rodape-item-info";
 
   const titulo = document.createElement("strong");
-  titulo.className = "rodape-card-titulo";
+  titulo.className = "rodape-item-titulo";
   titulo.textContent = dados.titulo;
   info.appendChild(titulo);
 
   if (dados.linhas && dados.linhas.length > 0) {
     for (let i = 0; i < dados.linhas.length; i++) {
       const linha = document.createElement("span");
-      linha.className = "rodape-card-linha";
+      linha.className = "rodape-item-linha";
       linha.textContent = dados.linhas[i];
       info.appendChild(linha);
     }
@@ -150,7 +145,7 @@ function criarCardRodape(dados) {
 
   if (dados.nota) {
     const nota = document.createElement("span");
-    nota.className = "rodape-card-nota";
+    nota.className = "rodape-item-nota";
     nota.textContent = dados.nota;
     info.appendChild(nota);
   }
@@ -252,6 +247,21 @@ function montarRodape() {
 
 /* ========== 4. EXECUÇÃO ========== */
 
+// Garante que o fav-icon oficial do colégio esteja presente em todas as páginas
+function garantirFavicon() {
+  let favicon = document.querySelector('link[rel="icon"]');
+  if (!favicon) {
+    favicon = document.createElement("link");
+    favicon.rel = "icon";
+    favicon.type = "image/png";
+    // Todas as páginas ficam em paginas/<pasta>/ (profundidade 2),
+    // exceto subpastas que podem estar em profundidade 3
+    favicon.href = "../../imagens-principais/logo-colegio.png";
+    document.head.appendChild(favicon);
+  }
+}
+
 // O script é carregado no fim do <body>, então as divs já existem
+garantirFavicon();
 montarMenu();
 montarRodape();
