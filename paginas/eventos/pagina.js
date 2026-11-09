@@ -31,20 +31,21 @@ const eventosSemanais = [
     titulo: "Treino de Basquetebol",
     tipo: "Evento semanal",
     area: "Esporte",
-    quando: "Toda semana",
-    resumo: "Treino de basquetebol com encontros semanais durante o ano letivo.",
-    imagem: "imagens/treino-de-basquetebol.jpg",
-    imagemAlt: "Equipe de basquetebol do Colégio Estadual Barbosa Ferraz reunida na quadra.",
+    quando: "Quarta e sexta, 19h às 20:30",
+    resumo: "Treino de basquetebol às quartas e sextas-feiras, das 19h às 20:30.",
+    imagem: "imagens/basquete.jpg",
+    imagemAlt: "Alunos em treino de basquetebol no Colégio Estadual Barbosa Ferraz.",
     imagemFormato: "paisagem",
-    imagemLargura: 544,
-    imagemAltura: 367,
+    imagemLargura: 1063,
+    imagemAltura: 656,
     sobre: [
-      "O treino de basquetebol acontece toda semana e faz parte da agenda do " +
-        "colégio durante o ano letivo.",
-      "O dia, o horário e o local dos encontros ainda não foram divulgados. " +
-        "A secretaria do colégio confirmará essas informações."
+      "O colégio apresenta um projeto de treinamento esportivo para a modalidade " +
+        "de basquetebol. Os encontros acontecem toda quarta-feira e sexta-feira, " +
+        "das 19:00 às 20:30.",
+      "O treino é realizado pelo professor Pablo. Para participar, procure a " +
+        "secretaria do colégio."
     ],
-    local: "[CONFIRMAR] local do treino",
+    local: "Colégio Estadual Barbosa Ferraz, [CONFIRMAR] espaço do treino",
     inscricao: "[CONFIRMAR] como participar"
   },
   {
@@ -52,13 +53,19 @@ const eventosSemanais = [
     titulo: "Programa Mais Aprendizagem",
     tipo: "Evento semanal",
     area: "Aprendizagem",
-    quando: "Toda semana",
-    resumo: "Turma do Programa Mais Aprendizagem com encontros semanais no colégio.",
+    quando: "Quinta, 14h às 16h",
+    resumo: "Aulas de português e matemática para o ENEM toda quinta-feira, das 14h às 16h.",
+    imagem: "imagens/mais-aprendizagem.jpg",
+    imagemAlt: "Alunos participando do Programa Mais Aprendizagem no Colégio Estadual Barbosa Ferraz.",
+    imagemFormato: "paisagem",
+    imagemLargura: 1706,
+    imagemAltura: 1080,
     sobre: [
-      "O colégio mantém uma turma do Programa Mais Aprendizagem, com encontros " +
-        "semanais ao longo do ano letivo.",
-      "O dia, o horário e o número de vagas ainda serão confirmados. Para mais " +
-        "informações, procure a secretaria do colégio."
+      "O Programa Mais Aprendizagem é um dos projetos para aprimoramento dos " +
+        "alunos no ENEM. Ele foi criado para reforçar as habilidades dos " +
+        "componentes de português e matemática.",
+      "Os encontros acontecem toda quinta-feira, das 14h às 16h, e são " +
+        "realizados pela professora Daiane."
     ],
     local: "Colégio Estadual Barbosa Ferraz, [CONFIRMAR] sala",
     inscricao: "[CONFIRMAR] vagas e inscrição"
@@ -70,6 +77,11 @@ const eventosSemanais = [
     area: "Tecnologia",
     quando: "Toda terça-feira",
     resumo: "Oficina de Robótica realizada toda terça-feira no colégio.",
+    imagem: "imagens/robotica.webp",
+    imagemAlt: "Estudantes em atividade de robótica.",
+    imagemFormato: "paisagem",
+    imagemLargura: 500,
+    imagemAltura: 385,
     sobre: [
       "A oficina de Robótica acontece toda terça-feira, no Colégio Estadual " +
         "Barbosa Ferraz.",
@@ -98,6 +110,29 @@ const eventosSemanais = [
     ],
     local: "[CONFIRMAR] local e sala",
     inscricao: "[CONFIRMAR] inscrição"
+  },
+  {
+    id: "projeto-altas-habilidades",
+    titulo: "Projeto Altas Habilidades",
+    tipo: "Evento semanal",
+    area: "Projetos",
+    quando: "Ter, qua e qui, 13h às 17h",
+    resumo: "Projeto da professora Daniele Arruda, às terças, quartas e quintas-feiras, das 13h às 17h.",
+    imagem: "imagens/altas-habilidades.webp",
+    imagemAlt: "Alunos desenvolvendo atividades do Projeto Altas Habilidades no Colégio Estadual Barbosa Ferraz.",
+    imagemFormato: "paisagem",
+    imagemLargura: 1080,
+    imagemAltura: 927,
+    sobre: [
+      "Desempenhado pela professora Daniele Arruda, a aula ofertada no período da " +
+        "tarde inova pois permite aos jovens desenvolverem projetos sobre temas, " +
+        "necessidades e oportunidades presentes na sociedade, a fim de tornar o " +
+        "mundo um lugar melhor!",
+      "O projeto acontece toda terça-feira, quarta-feira e quinta-feira, das " +
+        "13:00 às 17:00."
+    ],
+    local: "Colégio Estadual Barbosa Ferraz, [CONFIRMAR] sala",
+    inscricao: "[CONFIRMAR] inscrição"
   }
 ];
 
@@ -109,6 +144,11 @@ const eventosAnuais = [
     area: "Evento estudantil",
     quando: "Novembro",
     resumo: "Evento realizado pelos alunos do colégio, com programação em novembro.",
+    imagem: "imagens/setec.jpg",
+    imagemAlt: "Imagem do evento X SETEC do Colégio Estadual Barbosa Ferraz.",
+    imagemFormato: "paisagem",
+    imagemLargura: 1091,
+    imagemAltura: 953,
     sobre: [
       "O X SETEC acontece em novembro, no Colégio Estadual Barbosa Ferraz, e é " +
         "realizado pelos alunos do colégio.",
@@ -123,11 +163,18 @@ const eventosAnuais = [
     titulo: "Arraiá do Barbosa",
     tipo: "Evento anual",
     area: "Festa",
-    quando: "Julho",
-    resumo: "Festa do calendário do colégio, realizada em julho.",
+    quando: "Junho/Julho",
+    resumo: "Festa do calendário do colégio, realizada em junho ou julho, com início às 19h.",
+    imagem: "imagens/arraia.png",
+    imagemAlt: "Cartaz do Arraiá do Colégio Estadual Barbosa Ferraz.",
+    imagemFormato: "paisagem",
+    imagemLargura: 478,
+    imagemAltura: 358,
     sobre: [
-      "O Arraiá do Barbosa é um dos eventos anuais do colégio e acontece em julho.",
-      "A data e a programação da festa ainda serão confirmadas pela escola."
+      "O Arraiá do Barbosa é um dos eventos anuais do colégio e acontece em " +
+        "junho ou julho. A festa tem início às 19h.",
+      "A data exata ainda será confirmada pela escola. Procure a secretaria " +
+        "para mais informações."
     ],
     local: "Colégio Estadual Barbosa Ferraz, [CONFIRMAR] espaço",
     inscricao: "[CONFIRMAR] entrada"
@@ -137,15 +184,20 @@ const eventosAnuais = [
     titulo: "Seminário de Formação de Docentes",
     tipo: "Evento anual",
     area: "Formação",
-    quando: "Agosto",
+    quando: "28/10",
     resumo: "Seminário com a participação das alunas do curso de Formação de Docentes.",
+    imagem: "imagens/seminario.webp",
+    imagemAlt: "Imagem do Seminário de Formação de Docentes do Colégio Estadual Barbosa Ferraz.",
+    imagemFormato: "paisagem",
+    imagemLargura: 800,
+    imagemAltura: 489,
     sobre: [
-      "O Seminário de Formação de Docentes acontece em agosto e conta com a " +
-        "participação das alunas do curso de Formação de Docentes.",
-      "A data, a programação e o valor da inscrição ainda serão confirmados. " +
-        "A secretaria do colégio informará os detalhes."
+      "O Seminário de Formação de Docentes é uma amostra dos trabalhos " +
+        "desenvolvidos pelas alunas cursantes do curso de Formação de Docentes.",
+      "O evento é realizado no dia 28/10 e organizado pelas alunas do curso. " +
+        "O horário e o valor da inscrição devem ser confirmados com a secretaria."
     ],
-    local: "[CONFIRMAR] local do seminário",
+    local: "Colégio Estadual Barbosa Ferraz, [CONFIRMAR] espaço",
     inscricao: "[CONFIRMAR] valor da inscrição"
   }
 ];
