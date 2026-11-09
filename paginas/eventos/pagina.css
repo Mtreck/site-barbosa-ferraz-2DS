@@ -6,331 +6,867 @@
   Classes desta página começam com "eventos-" (ex.: .eventos-titulo).
 */
 
-/* ========== 1. CORES DESTA PÁGINA ========== */
+/* ========== 1. VARIÁVEIS E BASE DA PÁGINA ========== */
 
 /*
-  Azul principal pedido para a página de Eventos (#004C94) e o branco das caixas.
-  As duas cores ficam declaradas uma única vez aqui, neste bloco, e o resto do
-  arquivo usa só as variáveis abaixo e as variáveis que já existem no main.css.
-  Pendência: a regra 5 do REGRAS.md pede cor em variável do main.css. A correção
-  é o professor criar lá uma variável com este azul e a equipe trocar aqui por
-  var(--cor-eventos).
+  A página usa a mesma paleta do restante do site: azul profundo nos títulos,
+  azul institucional nos destaques e cinza-azulado claro nos fundos.
+  Nenhuma cor nova é criada aqui; tudo vem das variáveis do main.css.
 */
-main {
-  --eventos-azul: #004C94;
-  /* Versão clara do mesmo azul, que já existe como --cor-secundaria no main.css.
-     Ela entra só no gradiente (faixa de abertura e moldura dos cards), nunca
-     atrás de texto branco pequeno. */
-  --eventos-azul-claro: var(--cor-secundaria);
-  /* O mesmo azul com transparência, usado no brilho do card no mouse */
-  --eventos-azul-brilho: rgba(0, 76, 148, 0.35);
-  /* Espessura da moldura colorida que fica em volta do card branco */
-  --eventos-moldura: 3px;
-}
-
-/* A página controla o respiro pelas seções: a faixa azul encosta no cabeçalho
-   e o último cartão encosta no rodapé */
 body[data-pagina="eventos"] main {
+  --eventos-acento: var(--cor-secundaria);
+  --eventos-acento-forte: var(--cor-primaria);
+  --eventos-espaco-card: var(--espaco-md);
   padding-top: 0;
   padding-bottom: 0;
-}
-
-/* ========== 2. ABERTURA (FAIXA AZUL E TÍTULO) ========== */
-
-/* Faixa azul que ocupa a largura toda da tela */
-.eventos-abertura {
-  padding-top: var(--espaco-xl);
-  padding-bottom: var(--espaco-xl);
-  background-color: var(--eventos-azul);
-  /* O gradiente dá o tom mais vivo, indo do azul principal ao azul claro.
-     O azul claro só entra no fim da faixa, onde não passa nenhum texto. */
-  background-image: linear-gradient(
-    115deg,
-    var(--eventos-azul) 0%,
-    var(--eventos-azul) 55%,
-    var(--eventos-azul-claro) 100%
-  );
-  color: var(--cor-fundo);
-}
-
-/* Coluna do título no meio da faixa azul */
-.eventos-abertura-conteudo {
-  max-width: 900px;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-
-/* A palavra "Eventos" em destaque no alto da página */
-.eventos-titulo {
-  color: var(--cor-fundo);
-  font-family: var(--fonte-titulo);
-  font-weight: 800;
-  font-size: clamp(2.5rem, 11vw, 5rem);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 0;
-}
-
-/* Risquinho branco sob o título, que faz a ligação com o cartão de baixo */
-.eventos-titulo::after {
-  content: "";
-  display: block;
-  width: 72px;
-  height: 5px;
-  /* margin com auto nos dois lados centraliza o risquinho */
-  margin: var(--espaco-md) auto 0;
-  border-radius: 3px;
   background-color: var(--cor-fundo);
 }
 
-/* ========== 3. CARTÃO DE APRESENTAÇÃO ========== */
+/* ========== 2. ABERTURA DA PÁGINA ========== */
 
-/* Sobe por cima da faixa azul, como um papel apoiado no fim do título.
-   Fica no meio da tela e com o texto centralizado, como o título. */
-.eventos-apresentacao {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
+/* Cabeçalho claro, sem faixa azul: o título fica sobre o fundo branco */
+.eventos-abertura {
+  padding-top: var(--espaco-lg);
+  padding-bottom: var(--espaco-lg);
+  background-color: var(--cor-fundo);
+}
+
+/* Conteúdo centralizado, com largura confortável para a leitura */
+.eventos-abertura-conteudo {
+  max-width: 760px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: calc(var(--espaco-lg) * -1);
-  padding: var(--espaco-lg);
-  /* Só muda a cor da faixa da esquerda do .card para o azul da página */
-  border-left-color: var(--eventos-azul);
-  box-shadow: var(--sombra);
-  color: var(--cor-texto);
-  font-size: 1.05rem;
   text-align: center;
 }
 
-/* ========== 4. SEÇÕES DE EVENTOS ========== */
-
-/* O conteúdo das seções usa uma área um pouco maior que a padrão do site,
-   para os cards ficarem maiores e sobrar menos espaço vazio nas bordas */
-.eventos-secao .container,
-.eventos-fechamento .container {
-  max-width: 1200px;
+/* Traço curto acima do título, centralizado na cor de destaque da página */
+.eventos-titulo::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 0 auto var(--espaco-md);
+  border-radius: 2px;
+  background-color: var(--eventos-acento);
 }
+
+.eventos-titulo {
+  max-width: none;
+  margin-bottom: var(--espaco-md);
+  color: var(--cor-profunda);
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Apresentação da agenda logo abaixo do título, também centralizada */
+.eventos-abertura-texto {
+  max-width: 64ch;
+  margin-right: auto;
+  margin-left: auto;
+  color: var(--cor-texto);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.eventos-abertura-texto p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========== 3. CABEÇALHO DAS SEÇÕES ========== */
 
 .eventos-secao {
   padding-top: var(--espaco-lg);
+  padding-bottom: var(--espaco-lg);
 }
 
+/* A seção semanal tem fundo cinza-claro para separar os dois grupos de eventos */
+.eventos-secao-semanal {
+  background-color: var(--cor-fundo-suave);
+}
+
+/* A seção do calendário fica no branco para valorizar os cards */
 .eventos-secao-anual {
-  padding-top: var(--espaco-lg);
-}
-
-.eventos-secao-titulo {
-  color: var(--eventos-azul);
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  margin-bottom: var(--espaco-xs);
-  text-align: center;
-}
-
-.eventos-secao-texto {
-  max-width: 70ch;
-  margin-right: auto;
-  margin-bottom: var(--espaco-lg);
-  margin-left: auto;
-  /* Usa a cor de texto normal (e não a clara do site) para o contraste ficar bom */
-  color: var(--cor-texto);
-  font-size: 1.05rem;
-  text-align: center;
-}
-
-/* Lista de cards: reaproveita a .grade do main.css e tira a marca da lista */
-.eventos-grade {
-  list-style: none;
-}
-
-/* ========== 5. CARD DO EVENTO COM MOLDURA ANIMADA ========== */
-
-/*
-  O card tem duas partes: esta caixa colorida (a moldura) e, dentro dela, o
-  cartão branco com o texto. A moldura é um gradiente maior que o card, que
-  fica deslizando devagar, então o azul "anda" em volta do evento.
-*/
-.eventos-card {
-  padding: var(--eventos-moldura);
-  border-radius: calc(var(--raio) + var(--eventos-moldura));
-  background-color: var(--eventos-azul);
-  background-image: linear-gradient(
-    120deg,
-    var(--eventos-azul) 0%,
-    var(--eventos-azul-claro) 50%,
-    var(--eventos-azul) 100%
-  );
-  background-size: 300% 300%;
-  background-position: 0% 50%;
-  animation: eventos-moldura-viva 10s ease-in-out infinite;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Ao passar o mouse, o card sobe um pouco, ganha brilho e a moldura anda mais rápido */
-.eventos-card:hover,
-.eventos-card:focus-within {
-  animation-duration: 3s;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 22px var(--eventos-azul-brilho);
-}
-
-/* Caixa de branco por dentro da moldura */
-.eventos-card-conteudo {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: var(--espaco-lg);
-  border-radius: var(--raio);
   background-color: var(--cor-fundo);
 }
 
-/* Etiqueta com a periodicidade do evento (toda terça, novembro...) */
-.eventos-card-quando {
-  align-self: flex-start;
+/* Título e explicação da seção centralizados, com largura de leitura */
+.eventos-secao-cabecalho {
+  max-width: 680px;
+  margin-right: auto;
+  margin-bottom: var(--espaco-md);
+  margin-left: auto;
+  text-align: center;
+}
+
+/* Linha curta sob o título da seção, centralizada */
+.eventos-secao-titulo::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin: var(--espaco-sm) auto 0;
+  border-radius: 2px;
+  background-color: var(--eventos-acento);
+}
+
+.eventos-secao-titulo {
   margin-bottom: var(--espaco-sm);
-  padding: var(--espaco-xs) var(--espaco-sm);
+  color: var(--cor-profunda);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  text-wrap: balance;
+}
+
+.eventos-secao-texto {
+  max-width: 55ch;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  color: var(--cor-texto);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+/* ========== 4. GRADE E CARDS DE EVENTOS ========== */
+
+.eventos-grade {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--eventos-espaco-card);
+  align-items: stretch;
+  list-style: none;
+}
+
+/*
+  O card é uma superfície branca com uma linha de acento no topo.
+  A posição relativa permite que o link do título cubra o card inteiro.
+*/
+.eventos-card {
+  display: flex;
+  height: 100%;
+  border: 1px solid var(--cor-fundo-suave);
+  border-top: 3px solid var(--eventos-acento);
+  border-radius: calc(var(--raio) * 1.5);
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-top-color 0.25s ease;
+}
+
+/* Elevação leve e sombra mais evidente ao passar o mouse ou navegar pelo teclado */
+.eventos-card:hover,
+.eventos-card:focus-within {
+  transform: translateY(-4px);
+  border-top-color: var(--eventos-acento-forte);
+  box-shadow: var(--sombra-card-hover);
+}
+
+.eventos-card-conteudo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--espaco-md);
+  text-align: center;
+}
+
+/* Topo do card: categoria e frequência/data, centralizadas */
+.eventos-card-topo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-xs);
+  margin-bottom: var(--espaco-sm);
+}
+
+/* Etiqueta da categoria do evento, em formato de selo discreto */
+.eventos-card-area {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  padding: var(--espaco-xs) var(--espaco-md);
   border-radius: 999px;
-  background-color: var(--eventos-azul);
-  color: var(--cor-fundo);
-  font-family: var(--fonte-texto);
-  font-size: 0.85rem;
+  background-color: var(--cor-fundo-suave);
+  color: var(--eventos-acento-forte);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* Frequência ou data do evento, com um pequeno ponto de destaque */
+.eventos-card-quando {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-xs);
+  margin-bottom: 0;
+  color: var(--cor-profunda);
+  font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.5;
+  text-align: center;
+}
+
+.eventos-card-quando::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--eventos-acento);
 }
 
 .eventos-card-nome {
-  color: var(--eventos-azul);
-  font-size: 1.3rem;
-  margin-bottom: var(--espaco-sm);
+  width: 100%;
+  margin-bottom: var(--espaco-xs);
+  color: inherit;
+  font-size: clamp(1.15rem, 1.4vw, 1.3rem);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+/* O link ocupa o card inteiro, então qualquer área clicável abre o evento */
+.eventos-card-link {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border-radius: calc(var(--raio) * 1.5);
+  color: var(--cor-profunda);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Faixa de brilho animada (discreta) que atravessa o card */
+.eventos-card-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cor-superficie),
+    transparent
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.eventos-card:hover .eventos-card-link::after,
+.eventos-card:focus-within .eventos-card-link::after {
+  opacity: 0.35;
+  animation: eventos-brilho 0.75s ease;
+}
+
+/* O contorno de foco acompanha o formato arredondado do card */
+.eventos-card-link:focus-visible {
+  outline-offset: -4px;
+}
+
+/* Capa ilustrativa usada em alguns cards */
+.eventos-card-midia {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  background-color: var(--cor-fundo-suave);
+}
+
+.eventos-card-midia-fundo,
+.eventos-card-midia-imagem {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* A cópia desfocada preenche as laterais de imagens verticais */
+.eventos-card-midia-fundo {
+  object-fit: cover;
+  filter: blur(14px);
+  opacity: 0.38;
+  transform: scale(1.08);
+}
+
+.eventos-card-midia-imagem {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+
+/* O cartaz de Libras aparece inteiro, com o fundo suave nas laterais */
+.eventos-card-midia-retrato .eventos-card-midia-imagem {
+  padding: var(--espaco-sm);
+  object-fit: contain;
+}
+
+/* Escurece a base da imagem para a categoria e o período ficarem legíveis */
+.eventos-card-midia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, var(--cor-profunda), transparent 64%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Categoria e período sobre a capa, centralizados */
+.eventos-card-topo-midia {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  margin-bottom: 0;
+  padding: var(--espaco-sm) var(--espaco-md);
+}
+
+.eventos-card-topo-midia .eventos-card-area {
+  background-color: var(--cor-superficie);
+  color: var(--eventos-acento-forte);
+}
+
+.eventos-card-topo-midia .eventos-card-quando {
+  color: var(--cor-fundo);
+  text-shadow: 0 1px 3px var(--cor-profunda);
+}
+
+.eventos-card-topo-midia .eventos-card-quando::before {
+  background-color: var(--cor-fundo);
+}
+
+/* A imagem ganha um leve zoom no hover, sem sair do card */
+.eventos-card:hover .eventos-card-midia-imagem,
+.eventos-card:focus-within .eventos-card-midia-imagem {
+  transform: scale(1.04);
+}
+
+/* O texto começa mais perto da capa */
+.eventos-card-midia + .eventos-card-conteudo {
+  padding-top: var(--espaco-sm);
+}
+
+.eventos-card:hover .eventos-card-link,
+.eventos-card:focus-within .eventos-card-link {
+  color: var(--eventos-acento-forte);
 }
 
 .eventos-card-texto {
-  margin-bottom: 0;
+  max-width: 34ch;
+  margin-right: auto;
+  margin-bottom: var(--espaco-md);
+  margin-left: auto;
   color: var(--cor-texto);
-  font-size: 1.05rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
-/* Movimento da moldura: o gradiente vai e volta de um lado para o outro */
-@keyframes eventos-moldura-viva {
-  0% {
-    background-position: 0% 50%;
+/* Rodapé do card: separa a chamada do restante do conteúdo */
+.eventos-card-rodape {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+  padding-top: var(--espaco-sm);
+  border-top: 1px solid var(--cor-fundo-suave);
+}
+
+/* Botão "Ver detalhes" padronizado, sempre no pé do card */
+.eventos-card-acao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  padding: var(--espaco-sm) var(--espaco-md);
+  border: 1px solid var(--cor-primaria);
+  border-radius: 999px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.eventos-card:hover .eventos-card-acao,
+.eventos-card:focus-within .eventos-card-acao {
+  transform: translateY(-1px);
+  border-color: var(--cor-profunda);
+  background-color: var(--cor-profunda);
+}
+
+/* ========== 5. ANIMAÇÃO DE ENTRADA ========== */
+
+/*
+  A animação usa a propriedade translate, separada de transform,
+  para não conflitar com a elevação do hover.
+*/
+@keyframes eventos-surgir {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+    scale: 0.98;
   }
-  50% {
-    background-position: 100% 50%;
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
   }
-  100% {
-    background-position: 0% 50%;
+}
+
+/* Brilho que passa sobre o card ao passar o mouse */
+@keyframes eventos-brilho {
+  from {
+    transform: translateX(-130%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(220%) skewX(-18deg);
   }
 }
 
-/* Cada card começa a andar um pouco depois do anterior, para a página
-   inteira parecer uma onda contínua de azul em volta dos eventos */
-.eventos-grade > .eventos-card:nth-child(2) {
-  animation-delay: 0.7s;
+/* O JavaScript marca a seção antes de criar os cards, evitando piscar */
+.eventos-secao.eventos-animar .eventos-card {
+  opacity: 0;
 }
 
-.eventos-grade > .eventos-card:nth-child(3) {
-  animation-delay: 1.4s;
+/* Quando a seção entra na tela, os cards aparecem em sequência */
+.eventos-secao.eventos-animar.eventos-visivel .eventos-card {
+  animation: eventos-surgir 0.55s ease-out both;
 }
 
-.eventos-grade > .eventos-card:nth-child(4) {
-  animation-delay: 2.1s;
+.eventos-secao.eventos-animar.eventos-visivel .eventos-card:nth-child(1) {
+  animation-delay: 0.05s;
 }
 
-.eventos-grade > .eventos-card:nth-child(5) {
-  animation-delay: 2.8s;
+.eventos-secao.eventos-animar.eventos-visivel .eventos-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.eventos-secao.eventos-animar.eventos-visivel .eventos-card:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.eventos-secao.eventos-animar.eventos-visivel .eventos-card:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+.eventos-secao.eventos-animar.eventos-visivel .eventos-card:nth-child(5) {
+  animation-delay: 0.33s;
+}
+
+.eventos-secao.eventos-animar.eventos-visivel .eventos-card:nth-child(6) {
+  animation-delay: 0.4s;
 }
 
 /* ========== 6. ENCERRAMENTO ========== */
 
 .eventos-fechamento {
   padding-top: var(--espaco-lg);
-  padding-bottom: var(--espaco-xl);
+  padding-bottom: var(--espaco-lg);
+  background-color: var(--cor-fundo-suave);
 }
 
+/* Reaproveita a base do .card e organiza texto e botão lado a lado */
 .eventos-encerramento {
-  /* Mesma faixa azul dos outros cartões da página */
-  border-left-color: var(--eventos-azul);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-md);
+  padding: var(--espaco-md);
+  border-color: var(--cor-fundo);
+  border-left-color: var(--cor-secundaria);
 }
 
 .eventos-encerramento-texto {
-  max-width: 70ch;
-  margin-right: auto;
-  margin-left: auto;
-  color: var(--cor-texto);
-  font-size: 1.05rem;
+  max-width: 65ch;
 }
 
-/* Botão azul da página, no mesmo tom do título e das etiquetas */
+.eventos-encerramento-texto p {
+  margin-bottom: 0;
+  color: var(--cor-texto);
+}
+
+/* No encerramento, a linha do título continua alinhada à esquerda */
+.eventos-encerramento .eventos-secao-titulo::after {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+/* Botão no azul mais escuro do site, com bom contraste para o texto branco */
 .eventos-botao,
 .eventos-botao:hover,
+.eventos-botao:focus,
 .eventos-botao:focus-visible {
-  background-color: var(--eventos-azul);
-  border-color: var(--eventos-azul);
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
   color: var(--cor-fundo);
 }
 
-/* No mouse o botão fica mais escuro, para o texto branco continuar legível */
 .eventos-botao:hover,
 .eventos-botao:focus-visible {
   background-color: var(--cor-profunda);
   border-color: var(--cor-profunda);
 }
 
-/* ========== 7. AJUSTES DE TELA E DE MOVIMENTO ========== */
+/* ========== 7. PÁGINA DE DETALHE DO EVENTO ========== */
 
-/* Computador: os 4 eventos da semana ficam em 2x2, sem sobrar card solto */
-@media (min-width: 768px) {
+/* Cabeçalho da página de detalhe, com fundo claro em vez de faixa azul */
+.eventos-detalhe-abertura {
+  padding-top: var(--espaco-lg);
+  padding-bottom: var(--espaco-xl);
+  background-color: var(--cor-fundo-suave);
+}
+
+/* Caminho de volta para a agenda */
+.eventos-trilha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espaco-sm);
+  margin-bottom: var(--espaco-xl);
+  color: var(--cor-texto);
+  font-size: 0.9375rem;
+}
+
+.eventos-trilha a {
+  color: var(--cor-profunda);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.eventos-trilha a:hover,
+.eventos-trilha a:focus-visible {
+  text-decoration: underline;
+}
+
+.eventos-trilha-separador {
+  color: var(--cor-texto);
+}
+
+.eventos-detalhe-cabecalho {
+  max-width: 900px;
+}
+
+.eventos-detalhe-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-sm);
+  margin-bottom: var(--espaco-md);
+}
+
+/* O atributo hidden precisa vencer o display: flex acima */
+.eventos-detalhe-etiquetas[hidden] {
+  display: none;
+}
+
+.eventos-etiqueta {
+  display: inline-block;
+  padding: var(--espaco-xs) var(--espaco-md);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.eventos-etiqueta-tipo {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+}
+
+/* Eventos anuais usam o azul mais profundo na etiqueta */
+.eventos-etiqueta-anual {
+  background-color: var(--cor-profunda);
+}
+
+.eventos-etiqueta-area {
+  background-color: var(--cor-superficie);
+  color: var(--cor-profunda);
+}
+
+.eventos-detalhe-titulo {
+  max-width: 20ch;
+  margin-bottom: var(--espaco-md);
+  color: var(--cor-profunda);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.eventos-detalhe-resumo {
+  max-width: 65ch;
+  margin-bottom: 0;
+  color: var(--cor-texto);
+  font-size: 1.125rem;
+}
+
+/* Aviso exibido quando o endereço não corresponde a nenhum evento */
+.eventos-detalhe-erro {
+  max-width: 60ch;
+}
+
+.eventos-detalhe-erro p {
+  color: var(--cor-texto);
+  font-size: 1.0625rem;
+}
+
+.eventos-detalhe-erro .eventos-botao {
+  margin-top: var(--espaco-sm);
+}
+
+/* Corpo da página de detalhe */
+.eventos-detalhe-corpo {
+  padding-top: var(--espaco-xl);
+  padding-bottom: var(--espaco-xl);
+  background-color: var(--cor-fundo);
+}
+
+.eventos-detalhe-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
+  gap: var(--espaco-xl);
+  align-items: start;
+}
+
+.eventos-detalhe-subtitulo {
+  display: inline-block;
+  margin-bottom: var(--espaco-lg);
+  padding-bottom: var(--espaco-sm);
+  border-bottom: 3px solid var(--eventos-acento);
+  color: var(--cor-profunda);
+  font-size: 1.5rem;
+}
+
+.eventos-detalhe-texto {
+  max-width: 68ch;
+}
+
+.eventos-detalhe-texto p {
+  color: var(--cor-texto);
+  font-size: 1.0625rem;
+}
+
+.eventos-detalhe-texto p:last-child {
+  margin-bottom: 0;
+}
+
+/* Link de retorno no fim do texto */
+.eventos-detalhe-voltar {
+  display: inline-block;
+  margin-top: var(--espaco-lg);
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  color: var(--cor-primaria);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.eventos-detalhe-voltar:hover,
+.eventos-detalhe-voltar:focus-visible {
+  color: var(--cor-profunda);
+}
+
+/* Cartão lateral com as informações práticas do evento */
+.eventos-info-card {
+  padding: var(--espaco-lg);
+  border-radius: var(--raio);
+  background-color: var(--cor-fundo-suave);
+}
+
+.eventos-info-titulo {
+  margin-bottom: var(--espaco-md);
+  color: var(--cor-profunda);
+  font-size: 1.3rem;
+}
+
+.eventos-info-lista {
+  margin-bottom: var(--espaco-lg);
+}
+
+.eventos-info-lista div {
+  padding-top: var(--espaco-md);
+  padding-bottom: var(--espaco-md);
+  border-bottom: 1px solid var(--cor-fundo);
+}
+
+.eventos-info-lista div:first-child {
+  padding-top: 0;
+}
+
+.eventos-info-lista div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.eventos-info-lista dt {
+  margin-bottom: var(--espaco-xs);
+  color: var(--cor-profunda);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.eventos-info-lista dd {
+  margin: 0;
+  color: var(--cor-texto);
+  font-size: 1rem;
+}
+
+.eventos-info-aviso {
+  padding: var(--espaco-md);
+  border-left: 3px solid var(--cor-secundaria);
+  background-color: var(--cor-superficie);
+  color: var(--cor-texto);
+  font-size: 0.9rem;
+}
+
+.eventos-info-botao {
+  display: block;
+  text-align: center;
+}
+
+/* ========== 8. AJUSTES DE TELA ========== */
+
+/* Tablet e celular: a página de detalhe passa a ter uma coluna */
+@media (max-width: 860px) {
+  .eventos-detalhe-grade {
+    grid-template-columns: 1fr;
+    gap: var(--espaco-lg);
+  }
+
+  .eventos-detalhe-titulo {
+    max-width: none;
+  }
+}
+
+/* O botão de contato desce para baixo do texto antes que a frase fique apertada */
+@media (max-width: 1020px) {
+  .eventos-encerramento {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* Tablet: duas colunas para os cards */
+@media (min-width: 600px) {
   .eventos-grade {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Computador maior: os 3 eventos do ano ficam em uma linha só */
-@media (min-width: 960px) {
+/* Computador: os três eventos do calendário ficam em uma linha só */
+@media (min-width: 900px) {
   .eventos-grade-anual {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-/* Celular: cartão de apresentação sobe menos e tudo respira um pouco menos */
+/* Telas médias/grandes: os eventos semanais ficam em fileiras organizadas */
+@media (min-width: 900px) {
+  .eventos-grade-semanal {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Tela bem grande: os eventos semanais se distribuem em mais colunas */
+@media (min-width: 1200px) {
+  .eventos-grade-semanal {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* Celular: menos respiro e cards com padding menor */
 @media (max-width: 480px) {
   .eventos-abertura {
     padding-top: var(--espaco-lg);
-    padding-bottom: var(--espaco-xl);
-  }
-
-/* O cartão sobe menos, com menos espesso, e o texto longo volta para a
-     esquerda, que é mais fácil de ler no celular */
-  .eventos-apresentacao {
-    margin-top: calc(var(--espaco-md) * -1);
-    padding: var(--espaco-md);
-    text-align: left;
+    padding-bottom: var(--espaco-lg);
   }
 
   .eventos-secao,
-  .eventos-fechamento {
+  .eventos-fechamento,
+  .eventos-detalhe-corpo {
     padding-top: var(--espaco-lg);
     padding-bottom: var(--espaco-lg);
   }
+
+  .eventos-secao-cabecalho {
+    margin-bottom: calc(var(--espaco-md) + var(--espaco-sm));
+  }
+
+  .eventos-abertura-texto,
+  .eventos-secao-texto {
+    font-size: 1rem;
+  }
+
+  .eventos-detalhe-abertura {
+    padding-top: var(--espaco-md);
+    padding-bottom: var(--espaco-lg);
+  }
+
+  .eventos-trilha {
+    margin-bottom: var(--espaco-lg);
+  }
+
+  .eventos-card-conteudo {
+    padding: var(--espaco-lg) var(--espaco-md);
+  }
+
+  .eventos-encerramento {
+    padding: var(--espaco-md);
+  }
+
+  .eventos-info-card {
+    padding: var(--espaco-md);
+  }
 }
 
-/* Quem prefere menos movimento não vê a moldura animada nem o card subindo */
+/* Quem prefere menos movimento vê o conteúdo direto, sem animação nem elevação */
 @media (prefers-reduced-motion: reduce) {
   .eventos-card,
   .eventos-card:hover,
-  .eventos-card:focus-within {
-    animation: none;
-    transition: none;
+  .eventos-card:focus-within,
+  .eventos-card-acao,
+  .eventos-card:hover .eventos-card-acao,
+  .eventos-card:focus-within .eventos-card-acao {
     transform: none;
+    transition: none;
   }
 
-  .eventos-grade > .eventos-card:nth-child(2),
-  .eventos-grade > .eventos-card:nth-child(3),
-  .eventos-grade > .eventos-card:nth-child(4),
-  .eventos-grade > .eventos-card:nth-child(5) {
-    animation-delay: 0s;
+  .eventos-card-link {
+    transition: none;
+  }
+
+  .eventos-card-midia-imagem,
+  .eventos-card:hover .eventos-card-midia-imagem,
+  .eventos-card:focus-within .eventos-card-midia-imagem {
+    transform: none;
+    transition: none;
+  }
+
+  .eventos-card-link::after,
+  .eventos-card:hover .eventos-card-link::after,
+  .eventos-card:focus-within .eventos-card-link::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .eventos-secao.eventos-animar .eventos-card {
+    opacity: 1;
+  }
+
+  .eventos-secao.eventos-animar.eventos-visivel .eventos-card {
+    animation: none;
+    translate: none;
   }
 }

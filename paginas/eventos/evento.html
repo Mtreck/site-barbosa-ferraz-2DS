@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do evento | Colégio Estadual Barbosa Ferraz</title>
+  <link rel="icon" type="image/png" href="../../imagens-principais/logo-colegio.png">
+  <!-- Estilo compartilhado por todas as páginas -->
+  <link rel="stylesheet" href="../../main.css">
+  <!-- Estilo só desta página (equipe Eventos) -->
+  <link rel="stylesheet" href="pagina.css">
+</head>
+<body data-pagina="eventos">
+
+  <!-- O menu é montado pelo arquivo principal main.js -->
+  <div id="menu"></div>
+
+  <main id="evento-pagina">
+    <!-- ===== Cabeçalho do evento escolhido ===== -->
+    <section class="eventos-detalhe-abertura" aria-labelledby="evento-titulo">
+      <div class="container">
+        <nav class="eventos-trilha" aria-label="Você está aqui">
+          <a href="index.html">Eventos</a>
+          <span class="eventos-trilha-separador" aria-hidden="true">/</span>
+          <span id="evento-trilha-atual" aria-current="page">Detalhes do evento</span>
+        </nav>
+
+        <div class="eventos-detalhe-cabecalho">
+          <div class="eventos-detalhe-etiquetas" id="evento-etiquetas">
+            <span class="eventos-etiqueta eventos-etiqueta-tipo" id="evento-tipo">Evento</span>
+            <span class="eventos-etiqueta eventos-etiqueta-area" id="evento-area">Categoria</span>
+          </div>
+
+          <h1 class="eventos-detalhe-titulo" id="evento-titulo">Detalhes do evento</h1>
+          <p class="eventos-detalhe-resumo" id="evento-resumo"></p>
+
+          <!-- Este bloco só aparece se o evento do endereço não existir -->
+          <div class="eventos-detalhe-erro" id="evento-erro" hidden>
+            <p>
+              Não encontramos este evento na agenda. Ele pode ter sido removido
+              ou o endereço está incompleto.
+            </p>
+            <a class="botao eventos-botao" href="index.html">Voltar para a agenda de eventos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Texto e informações do evento ===== -->
+    <section class="eventos-detalhe-corpo" id="evento-corpo">
+      <div class="container eventos-detalhe-grade">
+        <article class="eventos-detalhe-artigo" aria-labelledby="evento-sobre-titulo">
+          <h2 class="eventos-detalhe-subtitulo" id="evento-sobre-titulo">Sobre o evento</h2>
+          <div class="eventos-detalhe-texto" id="evento-sobre"></div>
+
+          <a class="eventos-detalhe-voltar" href="index.html">Voltar para a agenda de eventos</a>
+        </article>
+
+        <aside class="eventos-detalhe-lateral" aria-labelledby="evento-info-titulo">
+          <div class="eventos-info-card">
+            <h2 class="eventos-info-titulo" id="evento-info-titulo">Informações do evento</h2>
+
+            <dl class="eventos-info-lista">
+              <div>
+                <dt>Quando</dt>
+                <dd id="evento-quando">—</dd>
+              </div>
+              <div>
+                <dt>Local</dt>
+                <dd id="evento-local">—</dd>
+              </div>
+              <div>
+                <dt>Inscrições</dt>
+                <dd id="evento-inscricao">—</dd>
+              </div>
+            </dl>
+
+            <p class="eventos-info-aviso">
+              Datas, horários e inscrições não publicados devem ser confirmados
+              diretamente com a secretaria.
+            </p>
+
+            <a class="botao eventos-botao eventos-info-botao" href="../contato/index.html">
+              Falar com a secretaria
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- O rodapé é montado pelo arquivo principal main.js -->
+  <div id="rodape"></div>
+
+  <!-- Primeiro os comportamentos globais, depois o JavaScript desta página -->
+  <script src="../../main.js"></script>
+  <script src="pagina.js"></script>
+</body>
+</html>
