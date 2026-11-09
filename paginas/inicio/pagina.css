@@ -170,7 +170,66 @@ body[data-pagina="inicio"] main {
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
 }
 
-/* ========== 2. CATÁLOGO DE CURSOS ========== */
+/* ========== 2. CONTEXTO DO COLÉGIO ========== */
+
+.inicio-contexto {
+  padding-top: var(--espaco-xl);
+  padding-bottom: var(--espaco-xl);
+  background-color: var(--cor-fundo);
+}
+
+.inicio-contexto-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--espaco-xl);
+  align-items: start;
+}
+
+.inicio-contexto-abertura {
+  padding-left: var(--espaco-lg);
+  border-left: 4px solid var(--cor-secundaria);
+}
+
+.inicio-contexto-titulo {
+  max-width: 15ch;
+  color: var(--cor-profunda);
+  font-size: 2rem;
+}
+
+.inicio-contexto-abertura p,
+.inicio-contexto-item p {
+  color: var(--cor-texto-suave);
+}
+
+.inicio-contexto-link {
+  max-width: 100%;
+  text-align: center;
+}
+
+.inicio-contexto-pautas {
+  display: grid;
+}
+
+.inicio-contexto-item {
+  padding: var(--espaco-md) 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.inicio-contexto-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.inicio-contexto-item h3 {
+  margin-bottom: var(--espaco-xs);
+  color: var(--cor-profunda);
+}
+
+.inicio-contexto-item p {
+  margin-bottom: var(--espaco-sm);
+}
+
+/* ========== 3. CATÁLOGO DE CURSOS ========== */
 
 /* Seção em cinza-claro: os cards brancos se destacam pelo fundo, sem linhas */
 .inicio-catalogo {
@@ -199,6 +258,7 @@ body[data-pagina="inicio"] main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
   gap: var(--espaco-lg) var(--espaco-md);
 }
 
@@ -211,8 +271,9 @@ body[data-pagina="inicio"] main {
   align-items: center;
   width: 100%;
   max-width: 340px;
-  padding: var(--espaco-lg) var(--espaco-md);
-  border: 1px solid transparent;
+  min-height: 390px;
+  padding: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
   background-color: var(--cor-fundo);
   box-shadow: var(--sombra-card);
@@ -234,14 +295,18 @@ body[data-pagina="inicio"] main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 112px;
+  height: 128px;
   width: 100%;
   margin-bottom: var(--espaco-md);
+  padding: var(--espaco-md);
+  border-radius: var(--raio);
+  background-color: var(--cor-fundo-suave);
 }
 
 /* Imagem real: cabe inteira na área, sem cortar nem distorcer */
 .inicio-card-imagem img {
   max-height: 100%;
+  max-width: 100%;
   width: auto;
   object-fit: contain;
 }
@@ -263,12 +328,25 @@ body[data-pagina="inicio"] main {
 .inicio-card-nome {
   color: var(--cor-profunda);
   font-size: 1.1rem;
+  min-height: 2.5em;
+  margin-bottom: var(--espaco-sm);
+}
+
+.inicio-card-modalidade {
+  align-self: center;
   margin-bottom: var(--espaco-md);
+  padding: var(--espaco-xs) var(--espaco-sm);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  color: var(--cor-secundaria);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 /* Dados do curso: rótulo em negrito + valor, uma linha cada */
 .inicio-card-dados {
   list-style: none;
+  width: 100%;
   margin-bottom: var(--espaco-lg);
   font-size: 0.95rem;
   color: var(--cor-texto-suave);
@@ -276,6 +354,8 @@ body[data-pagina="inicio"] main {
 
 .inicio-card-dados li + li {
   margin-top: var(--espaco-xs);
+  padding-top: var(--espaco-xs);
+  border-top: 1px solid var(--cor-fundo-suave);
 }
 
 .inicio-card-dados strong {
@@ -285,10 +365,12 @@ body[data-pagina="inicio"] main {
 /* Ação do card: contorno leve, empurrada para baixo para alinhar os cards */
 .inicio-card-link {
   margin-top: auto;
+  width: 100%;
   padding: var(--espaco-sm) var(--espaco-md);
   border: 1px solid var(--cor-secundaria);
   border-radius: var(--raio);
   color: var(--cor-secundaria);
+  text-align: center;
   font-weight: bold;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -309,7 +391,7 @@ body[data-pagina="inicio"] main {
   color: var(--cor-fundo);
 }
 
-/* ========== 3. QUADRO DE AVISOS E EVENTOS ========== */
+/* ========== 4. QUADRO DE AVISOS E EVENTOS ========== */
 .inicio-recados {
   padding-top: var(--espaco-xl);
   padding-bottom: var(--espaco-xl);
@@ -381,7 +463,7 @@ body[data-pagina="inicio"] main {
   }
 }
 
-/* ========== 4. AJUSTES DE TELA ========== */
+/* ========== 5. AJUSTES DE TELA ========== */
 
 /* Tablet: 2 cards por linha */
 @media (min-width: 600px) {
@@ -401,6 +483,26 @@ body[data-pagina="inicio"] main {
 @media (min-width: 1080px) {
   .inicio-card {
     width: calc((100% - 72px) / 4);
+  }
+}
+
+@media (max-width: 700px) {
+  .inicio-contexto-layout {
+    grid-template-columns: 1fr;
+    gap: var(--espaco-lg);
+  }
+
+  .inicio-contexto-abertura {
+    padding-left: var(--espaco-md);
+  }
+
+  .inicio-contexto-titulo {
+    font-size: 1.7rem;
+  }
+
+  .inicio-contexto-item:first-child {
+    padding-top: var(--espaco-md);
+    border-top: 1px solid var(--cor-borda);
   }
 }
 

@@ -7,56 +7,61 @@
 
 /* ========== 1. LISTA DE CURSOS ========== */
 
-// Cursos em funcionamento no colégio (informação do site atual).
-// Campo "imagem": caminho do PNG com fundo removido, dentro de imagens/
-// (ex.: "imagens/curso-enfermagem.png"). Enquanto estiver vazio (""),
-// o card mostra o placeholder no lugar da imagem.
+// Cursos em funcionamento no colégio (informação do catálogo de Cursos).
+// As imagens são reutilizadas da pasta pública da equipe Cursos.
 const cursos = [
   {
     nome: "Novo Ensino Médio",
-    imagem: "",
+    imagem: "../cursos/imagens/curso-ensino-medio.png",
+    imagemAlt: "Livro aberto com um sol, símbolo do curso de Ensino Médio",
     duracao: "03 anos",
     modalidade: "Normal",
     periodo: "Manhã e Noite"
   },
   {
     nome: "Técnico em Desenvolvimento de Sistemas",
-    imagem: "",
+    imagem: "../cursos/imagens/curso-desenvolvimento-de-sistemas.png",
+    imagemAlt: "Tela de computador com código, símbolo do curso de Desenvolvimento de Sistemas",
     duracao: "03 anos",
     modalidade: "Integrado",
     periodo: "Manhã"
   },
   {
     nome: "Técnico em Formação de Docentes",
-    imagem: "",
+    imagem: "../cursos/imagens/curso-formacao-de-docentes.png",
+    imagemAlt: "Pessoa lendo um livro, símbolo do curso de Formação de Docentes",
     duracao: "03 anos",
     modalidade: "Integrado",
     periodo: "Manhã e Tarde"
   },
   {
     nome: "Técnico em Estética",
-    imagem: "",
+    imagem: "../cursos/imagens/curso-estetica.png",
+    imagemAlt: "Rosto de perfil com pincel e flor, símbolo do curso de Estética",
     duracao: "03 anos",
     modalidade: "Integrado",
     periodo: "Manhã"
   },
   {
     nome: "Técnico em Enfermagem",
-    imagem: "",
+    imagem: "../cursos/imagens/curso-enfermagem.png",
+    imagemAlt: "Estetoscópio com um coração, símbolo do curso de Enfermagem",
     duracao: "02 anos",
     modalidade: "Subsequente",
     periodo: "Tarde"
   },
   {
     nome: "Técnico em Administração",
-    imagem: "",
+    imagem: "../cursos/imagens/curso-administracao.png",
+    imagemAlt: "Gráfico de crescimento com uma maleta, símbolo do curso de Administração",
     duracao: "01 ano",
     modalidade: "Subsequente",
     periodo: "Noite"
   },
   {
     nome: "Técnico em Segurança do Trabalho",
-    imagem: "",
+    imagem: "../cursos/imagens/curso-seguranca-do-trabalho.png",
+    imagemAlt: "Capacete de segurança com escudo, símbolo do curso de Segurança do Trabalho",
     duracao: "1,5 ano",
     modalidade: "Subsequente",
     periodo: "Noite"
@@ -78,7 +83,9 @@ function criarImagemDoCard(curso) {
   if (curso.imagem) {
     const imagem = document.createElement("img");
     imagem.src = curso.imagem;
-    imagem.alt = ""; // decorativa: o nome do curso já está no título do card
+    imagem.alt = curso.imagemAlt;
+    imagem.loading = "lazy";
+    imagem.decoding = "async";
     return imagem;
   }
 
@@ -104,6 +111,11 @@ function montarCardCurso(curso) {
   nome.textContent = curso.nome;
   item.appendChild(nome);
 
+  const modalidade = document.createElement("span");
+  modalidade.className = "inicio-card-modalidade";
+  modalidade.textContent = curso.modalidade;
+  item.appendChild(modalidade);
+
   // Dados do curso (duração, modalidade e período)
   const dados = document.createElement("ul");
   dados.className = "inicio-card-dados";
@@ -112,14 +124,12 @@ function montarCardCurso(curso) {
   dados.appendChild(criarDadoDoCard("Período", curso.periodo));
   item.appendChild(dados);
 
-  // [CONFIRMAR] link para a página do curso: por enquanto aponta para a
-  // página de Cursos, enquanto as páginas individuais não existem
+  // A página Cursos ainda não permite abrir detalhes por endereço.
   const link = document.createElement("a");
   link.className = "inicio-card-link";
-  link.href = "../cursos/index.html";
-  link.textContent = "Mais informações";
-  // Leitores de tela ouvem o nome do curso (os 7 links teriam o mesmo texto)
-  link.setAttribute("aria-label", "Mais informações sobre o curso " + curso.nome);
+  link.href = "../cursos/index.html#lista-cursos";
+  link.textContent = "Ver curso na página de Cursos";
+  link.setAttribute("aria-label", "Ver " + curso.nome + " no catálogo de Cursos");
   item.appendChild(link);
 
   return item;
